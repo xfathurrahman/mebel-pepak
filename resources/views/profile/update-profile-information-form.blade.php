@@ -1,4 +1,11 @@
-<x-jet-form-section submit="updateProfileInformation">
+<x-slot name="header_content">
+    <div>
+        <h2>{{ __('Profile Information') }}</h2>
+    </div>
+</x-slot>
+
+<x-jet-form-section submit="updateProfileInformation" class="mt-16">
+
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
