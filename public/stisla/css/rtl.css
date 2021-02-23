@@ -64,7 +64,7 @@ body, html {
   direction: rtl; }
 
 h1, h2, h3, h4, h5, h6, p, a, span, input, textarea, select, option, label {
-  font-family: Vazir, Tahoma, Arial; }
+    font-family: Vazir, Tahoma, Arial, serif; }
 
 .main-sidebar {
   position: fixed;
@@ -166,7 +166,7 @@ body.layout-2 .main-footer {
 
 .navbar {
   right: 250px;
-  left: 0px; }
+  left: 0; }
 
 .progress {
   direction: ltr; }

@@ -175,7 +175,12 @@ textarea.form-control {
   height: 64px; }
 
 .custom-control {
+    display: flex;
   line-height: 1.6rem; }
+
+.custom-control-child{
+    padding-top: 10px;
+}
 
 .custom-file,
 .custom-file-label,
@@ -597,6 +602,8 @@ select.form-control:not([size]):not([multiple]) {
   .alert.alert-dark {
     background-color: #191d21; }
 
+
+
 /* 3.5 Card */
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
@@ -912,14 +919,60 @@ select.form-control:not([size]):not([multiple]) {
   .card.card-hero .card-header {
     padding: 25px; } }
 
+.img {
+    max-width: 100%;
+    alignment: center;
+    vertical-align: middle;
+}
+
+ .c-thumb {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      border-radius: 5px;
+ }
+
+.flex-column-product {
+    display: flex;
+    position: relative;
+    flex-wrap:wrap;
+}
+
+.dilihat{
+     left: 0;
+     right: auto;
+     position: relative;
+     display: inline-block;
+     margin-top: 6px;
+     width: 60px;
+     height: 20px;
+     line-height: 20px;
+     overflow: hidden;
+ }
+
+.text-judul-product{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    max-width: 350px
+}
+
 /* 3.6 Table */
 .table {
+    width: 100%;
+    table-layout: fixed;
   color: inherit; }
   .table td, .table:not(.table-bordered) th {
     border-top: none; }
   .table:not(.table-sm):not(.table-md):not(.dataTable) td,
   .table:not(.table-sm):not(.table-md):not(.dataTable) th {
-    padding: 0 25px;
+    padding: 0;
     height: 60px;
     vertical-align: middle; }
   .table:not(.table-sm) thead th {
@@ -1050,6 +1103,11 @@ table tr:hover .table-links {
   font-size: 12px; }
 
 /* 3.10 Pagination */
+
+.pagination {
+    float: right;
+}
+
 .page-item .page-link {
   color: #6777ef;
   border-radius: 3px;
@@ -1164,7 +1222,7 @@ h6 .badge {
 .btn {
   font-weight: 600;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 25px;
   padding: .3rem .8rem;
   letter-spacing: .5px; }
   .btn.btn-icon-split {
@@ -1445,9 +1503,12 @@ h6 .badge {
 /* 3.14 Breadcrumb */
 .breadcrumb {
     margin-bottom: 0;
-  background-color: #f9f9f9; }
+  background-color: #f5f5f5; }
   .breadcrumb .breadcrumb-item {
     line-height: 1; }
+.breadcrumb-item.active {
+    color: #6c757d;
+}
     .breadcrumb .breadcrumb-item i {
       margin-right: 5px; }
 
@@ -1539,7 +1600,7 @@ h6 .badge {
   right: 0px;
   z-index: 890;
   position: fixed;
-  background-color: #6777ef; }
+  background-color: #ED286B; }
   .navbar.active {
     background-color: #6777ef;
     box-shadow: rgba(103, 119, 239, 0.2) rgba(0, 0, 0, 0.03); }
@@ -1650,8 +1711,8 @@ h6 .badge {
       margin-top: 3px; }
     .navbar .nav-link.nav-link-lg i {
       margin-left: 0 !important;
-      font-size: 18px;
-      line-height: 32px; }
+      font-size: 20px;
+      line-height: 47px; }
     .navbar .nav-link.nav-link-user {
       color: #fff;
       padding-top: 4px;
@@ -1709,11 +1770,11 @@ h6 .badge {
   .navbar .nav-link.nav-link-lg div {
     display: none; } }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .navbar .form-inline .search-element {
     display: block; } }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 768px) and (max-width: 992px) {
   .collapse {
     position: relative; }
     .collapse .navbar-nav {
@@ -2096,7 +2157,28 @@ blockquote {
   font-size: 15px; }
 
 .fas, .far, .fab, .fal {
-  font-size: 13px; }
+  font-size: 13px;
+}
+
+.fa-angle-double-down{
+    color: #FFFFFF;
+}
+
+.mytable, .th, .td {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mytable {
+    width: 100%;
+}
+
+.mytable.fixed {
+    table-layout: fixed;
+}
+.mytable.fixed .td {
+    overflow: hidden;
+}
 
 #visitorMap {
   height: 210px; }
@@ -2486,7 +2568,7 @@ pre {
   top: 0;
   height: 100%;
   width: 250px;
-  background-color: #fff;
+  background-color: #FFFFFF;
   z-index: 1001;
   left: 0; }
 
@@ -2831,7 +2913,7 @@ body.layout-3 .main-footer {
       .main-sidebar .sidebar-menu li a:hover {
         background-color: #f8fafb; }
     .main-sidebar .sidebar-menu li.active a {
-      color: #6777ef;
+      color: #ED286B;
       font-weight: 600;
       background-color: #f8fafb; }
       .main-sidebar .sidebar-menu li.active a.has-dropdown:after {
@@ -2877,6 +2959,7 @@ body.layout-3 .main-footer {
         padding-left: 10px; }
 
 .main-content {
+  background: #f5f5f5;
   padding-left: 280px;
   padding-right: 30px;
   padding-top: 80px;

@@ -1,6 +1,3 @@
-@php
-    $user = auth()->user();
-@endphp
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg main-navbar">
     <div class="section-header">
@@ -10,9 +7,10 @@
             {{ __('Halaman') }}
         @endisset
     </div>
+    <i style="font-size: 50px; text-align: center; color: white;" class="fab fa-angrycreative"></i>
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="sidebar" class="my-auto nav-link nav-link-lg "><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
         </ul>
         <div class="search-element">
@@ -79,7 +77,7 @@
         </div>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+        <li class="hover:bg-pink-700 dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
                 </div>
@@ -142,7 +140,7 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+        <li class="hover:bg-pink-700 dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifications</div>
                 <div class="dropdown-list-content dropdown-list-icons">
@@ -197,14 +195,15 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown">
+        <li class="hover:bg-pink-700 dropdown">
             <!-- Profile -->
-            <div class="ml-3 relative">
+            <div class="px-1.5 py-1 relative content-center">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 mr-1.5 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <div class="ml-0.5 mr-1 my-auto"><i class="fas fa-angle-double-down"></i></div>
                             </button>
                         @else
                             <span class="inline-flex rounded-md">
@@ -219,7 +218,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-
                         <!-- Account Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
                             Halo ,
