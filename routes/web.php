@@ -24,4 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
+    Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelected');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });
