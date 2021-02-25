@@ -11,11 +11,11 @@
             <li class="nav-item {{ Request::is('products/create') ? 'active' : '' }}"><a class="nav-link" href="{{route('products.create')}}"><i class="fas fa-cart-plus"></i></i><span>Tambar Produk</span></a></li>
             <li class="nav-item {{ Request::is('products') ? 'active' : '' }}"><a class="nav-link" href="{{route('products.index')}}"><i class="fas fa-stream"></i><span>Daftar Produk</span></a></li>
             <li class="nav-item dropdown {{ Request::is('dashboard*') ? 'active' : '' }}">
-                <a href="{{route('dashboard')}}" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+                <a href="{{route('dashboard')}}" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
                 <ul class="dropdown-menu ">
-                    <li><a class="nav-link" href="/dashboard">Default Layout</a></li>
-                    <li><a class="nav-link" href="/dashboard">Transparent Sidebar</a></li>
-                    <li><a class="nav-link" href="/dashboard">Top Navigation</a></li>
+                    <li><a class="nav-link" href="{{ route('profile.show') }}">Akun</a></li>
+                    <li><a class="nav-link" href="/dashboard">Alamat</a></li>
+                    <li><a class="nav-link" href="/dashboard">Notifikasi</a></li>
                 </ul>
             </li>
         </ul>

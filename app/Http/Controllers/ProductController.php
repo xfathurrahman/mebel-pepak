@@ -14,12 +14,12 @@ class ProductController extends Controller
     public function index()
     {
         $listproducts['listproducts'] = Product::Paginate(7)->onEachSide(2);
-        return view('products.index')->with($listproducts);
+        return view('pages.products.index')->with($listproducts);
     }
 
     public function create()
     {
-        return view('products.create');
+        return view('pages.products.create');
     }
 
     public function store(Request $request)

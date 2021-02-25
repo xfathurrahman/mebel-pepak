@@ -15,7 +15,7 @@
         </ul>
         <div class="search-element">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn" style="line-height: 24px;" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             <div class="search-result">
                 <div class="search-header">
@@ -227,12 +227,6 @@
                         </div>
 
                         <div class="border-t border-gray-100"></div>
-
-                        <div class="text-dark">
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                <i class="far fa-user fa-bold">&emsp;{{ __('Profile') }}</i>
-                            </x-jet-dropdown-link>
-                        </div>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
