@@ -2569,7 +2569,7 @@ pre {
   height: 100%;
   width: 250px;
   background-color: #FFFFFF;
-  z-index: 1001;
+  z-index: 880;
   left: 0; }
 
 .main-sidebar,
@@ -3029,6 +3029,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     padding: 0;
     display: block; }
   .main-content {
+    z-index: 2;
     padding-left: 30px;
     padding-right: 30px;
     width: 100% !important; }

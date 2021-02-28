@@ -6,7 +6,9 @@
         @else
             {{ __('Halaman') }}
         @endisset
+
     </div>
+
     <i style="font-size: 50px; text-align: center; color: white;" class="fab fa-angrycreative"></i>
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
