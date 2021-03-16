@@ -8,8 +8,6 @@
         @endisset
 
     </div>
-
-    <i style="font-size: 50px; text-align: center; color: white;" class="fab fa-angrycreative"></i>
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="my-auto nav-link nav-link-lg "><i class="fas fa-bars"></i></a></li>
