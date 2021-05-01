@@ -1,0 +1,62 @@
+.image-up-text-head-wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.image-up-text-head-wrapper h4 {
+    display: block;
+    position: relative;
+    font-weight: 800;
+    font-family: "Nunito Sans", -apple-system, sans-serif;
+    font-size: 1.14286rem;
+    line-height: 22px;
+    color: rgba(49, 53, 59, 0.96);
+    text-decoration: initial;
+    margin: 0;
+}
+
+.image-up-text-head-wrapper span {
+    font-style: normal;
+    font-weight: 800;
+    margin-left: 8px;
+    display: flex;
+    padding: 2px 4px;
+    width: 38px;
+    height: 20px;
+    left: 44px;
+    top: 0;
+    background: rgb(243, 244, 245);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 16px;
+    color: rgb(159, 166, 176);
+}
+
+.image-up-text-body {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.857143rem;
+    color: rgba(49, 53, 59, 0.68);
+}
+
+.btn-pilih-foto {
+    color: rgb(3, 172, 14);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.857143rem;
+    height: 40px;
+    line-height: 24px;
+    width: auto;
+    border-radius: 8px;
+    font-weight: 700;
+    outline: none;
+    padding: 0px 16px;
+    transition: background 0.8s ease 0s;
+    cursor: pointer;
+    display: inline-block;
+    background: radial-gradient(circle, transparent 1%, rgb(255, 255, 255) 1%) center center / 15000% rgb(255, 255, 255);
+    border: 1px solid rgb(3, 172, 14);
+    text-indent: initial;
+    position: relative;
+}
+
