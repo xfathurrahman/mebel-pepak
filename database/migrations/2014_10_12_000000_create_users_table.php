@@ -11,6 +11,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('role')->default('user');
             $table->string('name');
             $table->string('username')->nullable()->unique();
             $table->string('email')->unique();
@@ -25,17 +26,17 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('user_id');
-            $table->string('state')->nullable();
-            $table->string('city')->nullable();
-            $table->text('address');
-            $table->string('phone')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
-        });
+//
+//        Schema::create('addresses', function (Blueprint $table) {
+//            $table->bigIncrements('id');
+//            $table->foreignId('user_id');
+//            $table->string('state')->nullable();
+//            $table->string('city')->nullable();
+//            $table->text('address');
+//            $table->string('phone')->nullable();
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+//            $table->timestamps();
+//        });
 
     }
 

@@ -6,7 +6,6 @@
         @else
             {{ __('Halaman') }}
         @endisset
-
     </div>
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
@@ -76,11 +75,10 @@
             </div>
         </div>
     </form>
-    <ul class="navbar-nav navbar-right">
+    <div class="navbar-nav navbar-right">
         <li class="hover:bg-pink-700 dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Messages
-                </div>
+                <div class="dropdown-header">Messages</div>
                 <div class="dropdown-list-content dropdown-list-message">
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-avatar">
@@ -250,5 +248,5 @@
                 </x-jet-dropdown>
             </div>
         </li>
-    </ul>
+    </div>
 </nav>

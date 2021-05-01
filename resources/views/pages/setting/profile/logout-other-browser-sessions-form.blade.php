@@ -78,7 +78,8 @@
                                 placeholder="{{ __('Kata sandi') }}"
                                 x-ref="password"
                                 wire:model.defer="password"
-                                wire:keydown.enter="logoutOtherBrowserSessions" />
+                                wire:keydown.enter="logoutOtherBrowserSessions">
+                    </x-jet-input>
 
                     <x-jet-input-error for="password" class="mt-2" />
                 </div>

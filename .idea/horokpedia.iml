@@ -129,5 +129,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.3.1" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="animate.css" level="application" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="@popperjs/core" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-zoom" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.6.0.slim" level="application" />
+    <orderEntry type="library" name="easyzoom" level="application" />
   </component>
 </module>

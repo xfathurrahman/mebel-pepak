@@ -28,7 +28,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'web_address' => ['required', 'string', 'max:255'],
             'birth_date' => ['required', 'date'],
             'photo' => ['nullable', 'image', 'max:1024'],
-            'header_photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('nama');
             $table->bigInteger('harga');
             $table->string('deskripsi');
-            $table->integer('kategori_id')->unsigned();
+            $table->integer('kategori_id');
             $table->string('gambar')->nullable();
             $table->softDeletes();
             $table->timestamps();

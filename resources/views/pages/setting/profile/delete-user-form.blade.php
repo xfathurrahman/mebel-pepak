@@ -48,7 +48,7 @@
                     </x-jet-secondary-button>
 
                     <x-jet-danger-button class="ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
-                        {{ __('Hapus') }}
+                        {{ __('Hapus Akun') }}
                     </x-jet-danger-button>
                 </x-slot>
             </x-jet-dialog-modal>

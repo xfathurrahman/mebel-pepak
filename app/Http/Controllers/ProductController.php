@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Pagination;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $listproducts['listproducts'] = Product::Paginate(7)->onEachSide(2);
+        $listproducts['listproducts'] = Product::with('categories')
+            ->where('user_id','=',Auth::user()->id)
+            ->Paginate(7)
+            ->onEachSide(2);
+
         return view('pages.products.index')->with($listproducts);
     }
 
     public function create()
     {
-        return view('pages.products.create');
+        $listcategories['listcategories'] = Category::get();
+        return view('pages.products.create')->with($listcategories);
     }
 
     public function store(Request $request)
@@ -28,7 +34,7 @@ class ProductController extends Controller
         if($request->gambar->getClientOriginalName()){
             $file = str_replace(' ', '', $request->gambar->getClientOriginalName());
             $fileName = date('mYdhs').rand(1,999).'_'.$file;
-            $request->gambar->storeAs('public/gambarproduct', $fileName);
+            $request->gambar->storeAs('public/product-image', $fileName);
         }
         Product::create(array_merge($request->all(),[
             'gambar' => $fileName

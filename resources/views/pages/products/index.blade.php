@@ -35,7 +35,7 @@
 
                     <div class="card-header-form">
                         <a href="{{route('products.create')}}" class="btn btn-icon icon-left btn-primary ">
-                            <i class="fas fa-cart-plus"></i> Jual</a>
+                            <i class="fas fa-cart-plus"></i> Tambah Produk</a>
                     </div>
 
                 </div>
@@ -76,7 +76,7 @@
                                                        value="{{ $listproduct -> id }}">
                                             </label>
                                             <img style="display: block; margin-left: auto; margin-right: auto;" class="img c-thumb" alt="image"
-                                                 data-toggle="tooltip" title=""  src="{{ asset("storage/gambarproduct")."/".$listproduct->gambar }}">
+                                                 data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct->gambar }}">
                                         </div>
                                         <div>
                                             <p style="margin-bottom: 0; margin-top: 1px; margin-left: 30px;" class="mr-2">
@@ -93,7 +93,7 @@
                                         <div class="badge badge-success">Bekas</div>
                                     </td>
                                     <td class="text-center">
-                                        <div class="badge badge-success">Elektronika</div>
+                                        <div class="badge badge-success">{{ $listproduct-> categories -> name }}</div>
                                     </td>
                                     <td class="text-center">
                                         {{ "Rp.".number_format($listproduct->harga) }}
