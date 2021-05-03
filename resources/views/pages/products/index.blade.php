@@ -65,54 +65,56 @@
                             <tbody>
                             @if ($listproducts->count())
                                 @foreach($listproducts as $listproduct)
-                                <tr id="pid{{$listproduct->id}}">
-                                    <td style="width: 30%"  class="td p-0 pl-4 text-center">
-                                        <div class="flex-column-product custom-control-child">
-                                            <label>
-                                                <input name="ids"
-                                                       id="checkSingle"
-                                                       type="checkbox"
-                                                       class="checkSingle rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                       value="{{ $listproduct -> id }}">
-                                            </label>
-                                            <img style="display: block; margin-left: auto; margin-right: auto;" class="img c-thumb" alt="image"
-                                                 data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct->gambar }}">
-                                        </div>
-                                        <div>
-                                            <p style="margin-bottom: 0; margin-top: 1px; margin-left: 30px;" class="mr-2">
-                                                <i class="fas fa-eye"></i>&nbsp;&nbsp;100&nbsp;&nbsp;
-                                                <i class="fas fa-grin-hearts"></i>&nbsp;&nbsp;15&nbsp;&nbsp;
-                                                <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;8
-                                            </p>
-                                        </div>
-                                        <div style="margin-bottom: 0; margin-top: 1px; margin-left: 30px;">
-                                            <p class="text-judul-product">{{ $listproduct->nama }}</p>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="badge badge-success">Bekas</div>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="badge badge-success">{{ $listproduct-> categories -> name }}</div>
-                                    </td>
-                                    <td class="text-center">
-                                        {{ "Rp.".number_format($listproduct->harga) }}
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="badge badge-success">100</div>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="badge badge-success">{{ "#".number_format($listproduct->id) }}</div>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
-                                        <a href="#" class="btn btn-danger delete"
-                                           data-toggle="modal"
-                                           data-target="#deleteModal"
-                                           data-productid="{{$listproduct->id}}"><i class="fas fa-times"></i> Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr class="row-product" id="pid{{$listproduct->id}} product-hover">
+                                        <td style="width: 30%" class="td p-0 pl-4 text-center">
+                                            <div class="check-product custom-control-child">
+                                                <label>
+                                                    <input name="ids"
+                                                           id="checkSingle"
+                                                           type="checkbox"
+                                                           class="checkSingle rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                                           value="{{ $listproduct -> id }}">
+                                                </label>
+                                            </div>
+                                            <a class="text-decoration-none text-black" href="{{ url( 'detail/'.Str::slug($listproduct->users->name).'/'.$listproduct -> id.'/'.Str::slug($listproduct->nama) ) }}">
+                                                <div style="margin: 13px auto 0 30px;">
+                                                    <p class="text-judul-product mb-1 leading-5 text-justify">{{ $listproduct->nama }}</p>
+                                                </div>
+                                                    <img style="display: block; margin-left: auto; margin-right: auto;" class="img c-thumb" alt="image"
+                                                         data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct->images->image_path }}">
+                                            </a>
+                                            <div>
+                                                <p class="mx-auto my-2">
+                                                    👀 &nbsp;&nbsp;100&nbsp;&nbsp;
+                                                    😍 &nbsp;&nbsp;15&nbsp;&nbsp;
+                                                    📨 &nbsp;&nbsp;8
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="badge badge-success">Bekas</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="badge badge-success">{{ $listproduct-> categories -> name }}</div>
+                                        </td>
+                                        <td class="text-center">
+                                            @currency($listproduct->harga)
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="badge badge-success">100</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="badge badge-success">{{ "#".number_format($listproduct->id) }}</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
+                                            <a href="#" class="btn btn-danger delete"
+                                               data-toggle="modal"
+                                               data-target="#deleteModal"
+                                               data-productid="{{$listproduct->id}}"><i class="fas fa-times"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 @else
                                     <tr>
@@ -228,6 +230,10 @@
         $('table').on('change', ':checkbox', function() {
             $('#action_id').toggle(!!$('input:checkbox:checked').length);
         });
+
+        // $('td[data-href]').on("click", function() {
+        //     document.location = $(this).data('href');
+        // });
 
     });
 

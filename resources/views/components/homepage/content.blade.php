@@ -57,7 +57,7 @@
                         </div>
                         <div class="product-option w-5 h-5 m-1 rounded-full">
                             <a type="button" id="dropdownMenu" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
                             </a>
                             <div class="dropdown-menu">
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <a class="a-link" href="{{ url( 'detail/'.Str::slug($item->users->name).'/'.$item -> id.'/'.Str::slug($item->nama) ) }}">
-                            <img class="image-product" src="{{ asset("storage/product-image")."/".$item -> gambar }}" alt="samplelaptop">
+                            <img class="image-product" src="{{ asset("storage/product-image")."/".$item -> images -> image_path }}" alt="Image from {{ $item->users->name }}">
                             <div class="card-body p-2">
                                 <div class="tag-info py-2" bg="{{ asset('storage/assets/tagbgred.png') }}">{{ "Rp.".number_format($item -> harga) }}</div>
                                 <div class="product-name text-left mt-2">{{ $item -> nama }}</div>
@@ -88,4 +88,3 @@
         </div>
     </div>
 </div>
-

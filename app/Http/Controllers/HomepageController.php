@@ -11,7 +11,7 @@ class HomepageController extends Controller
 
     public function index()
     {
-        $listproducts['listproducts'] = Product::with('users')->orderBy('created_at', 'DESC')->get();
+        $listproducts['listproducts'] = Product::with('users','images')->orderBy('created_at', 'DESC')->get();
         $listcategories['listcategories'] = Category::orderBy('id', 'asc')->get();
         $listcarousels['listcarousels'] = Carousel::get();
 

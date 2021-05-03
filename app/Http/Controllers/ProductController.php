@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $listproducts['listproducts'] = Product::with('categories')
+        $listproducts['listproducts'] = Product::with('categories','images','users')
             ->where('user_id','=',Auth::user()->id)
             ->Paginate(7)
             ->onEachSide(2);
@@ -30,7 +31,23 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        $data = $request->all();
+        $product = $user->products()->create($data);
+
         $fileName = '';
+        if($request->image_path->getClientOriginalName()){
+            $file = str_replace(' ', '', $request->image_path->getClientOriginalName());
+            $fileName = date('mYdhs').rand(1,999).'_'.$file;
+            $request->image_path->storeAs('public/product-image', $fileName);
+        }
+        Image::create(array_merge($request->all(),[
+            'image_path' => $fileName,
+            'product_id' => $product -> id
+        ]));
+        return redirect('products');
+
+/*        $fileName = '';
         if($request->gambar->getClientOriginalName()){
             $file = str_replace(' ', '', $request->gambar->getClientOriginalName());
             $fileName = date('mYdhs').rand(1,999).'_'.$file;
@@ -39,7 +56,25 @@ class ProductController extends Controller
         Product::create(array_merge($request->all(),[
             'gambar' => $fileName
         ]));
-        return redirect('products');
+        return redirect('products');*/
+
+/*        $user = Auth::user();
+        $product = new Product();
+        $data = $request->all();
+        $product = $user->products()->create($data);
+        if($request->hasFile('product_id')){
+            $files = $request->file('product_id');
+            foreach ($files as $file){
+                $image_path = time().'_'.$file->getClientOriginalName();
+                $image_path = str_replace(' ','-',$image_path);
+                $file->move('product_image', $image_path);
+                $product->image()->create(['image_path'=>$image_path]);
+            }
+        }
+        return redirect('products');*/
+
+
+
     }
 
     public function show($id)

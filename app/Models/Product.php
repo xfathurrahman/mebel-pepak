@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -16,7 +18,6 @@ class Product extends Model
         'harga',
         'deskripsi',
         'kategori_id',
-        'gambar',
     ];
 
 
@@ -28,5 +29,10 @@ class Product extends Model
     public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class,'kategori_id', 'id');
+    }
+
+    public function images(): HasOne
+    {
+        return $this->hasOne(Image::class,'product_id','id');
     }
 }

@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 //
+        //TODO
 //        Schema::create('addresses', function (Blueprint $table) {
 //            $table->bigIncrements('id');
 //            $table->foreignId('user_id');

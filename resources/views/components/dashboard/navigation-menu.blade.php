@@ -9,7 +9,7 @@
     </div>
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="my-auto nav-link nav-link-lg "><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="sidebar" class="my-auto nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
         </ul>
         <div class="search-element">
@@ -76,6 +76,7 @@
         </div>
     </form>
     <div class="navbar-nav navbar-right">
+        <li class="hover:bg-pink-700 dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
         <li class="hover:bg-pink-700 dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages</div>

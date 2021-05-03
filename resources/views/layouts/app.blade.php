@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('stisla/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('stisla/css/components.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+    {{--<link rel="stylesheet" type="text/css" href="{{ asset('css/4image-upload.css') }}">--}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
 
@@ -34,7 +35,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased sidebar-mini">
 
     <div id="app">
         <div class="main-wrapper">

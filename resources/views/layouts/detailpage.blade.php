@@ -113,6 +113,9 @@
                 });
             });
         </script>
+        {{--Image Upload--}}
+        <script src="{{ asset('js/4image-upload.js') }}"></script>
+
 
 </body>
 </html>

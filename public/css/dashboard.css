@@ -41,22 +41,152 @@
 }
 
 .btn-pilih-foto {
-    color: rgb(3, 172, 14);
+    color: rgb(255, 86, 86);
     font-family: "Nunito Sans", sans-serif;
     font-size: 0.857143rem;
     height: 40px;
-    line-height: 24px;
+    line-height: 40px;
     width: auto;
     border-radius: 8px;
     font-weight: 700;
     outline: none;
-    padding: 0px 16px;
+    padding: 0 16px;
     transition: background 0.8s ease 0s;
     cursor: pointer;
     display: inline-block;
     background: radial-gradient(circle, transparent 1%, rgb(255, 255, 255) 1%) center center / 15000% rgb(255, 255, 255);
-    border: 1px solid rgb(3, 172, 14);
+    border: 1px solid rgb(255, 86, 86);
     text-indent: initial;
     position: relative;
 }
+
+/*placeholder tokped*/
+.css-n1y5a3 {
+    box-sizing: border-box;
+    box-shadow: rgb(49 53 59 / 12%) 0px 1px 6px;
+    border-radius: 8px;
+    margin-right: 12px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(79, 209, 90);
+    width: 190px;
+    height: 190px;
+}
+
+.css-kmq1n0 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    place-content: center;
+    width: inherit;
+    height: inherit;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-1rd7url {
+    background-image: url(https://assets.tokopedia.net/assets-tokopedia-lite/v2/icarus/kratos/ec5ed6c9.svg);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.css-17t9ldh {
+    padding-top: 12px;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 20px;
+    color: rgba(49, 53, 59, 0.32);
+}
+
+.css-s027nm {
+    box-sizing: border-box;
+    box-shadow: rgb(49 53 59 / 12%) 0px 1px 6px;
+    border-radius: 8px;
+    margin-right: 12px;
+    background: rgb(243, 244, 245);
+    width: 170px;
+    height: 170px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px dashed rgb(219, 222, 226);
+}
+
+.css-kmq1n0 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    place-content: center;
+    width: inherit;
+    height: inherit;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-1ohaj7u {
+    background-image: url(https://assets.tokopedia.net/assets-tokopedia-lite/v2/icarus/kratos/19bba153.svg);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.css-1pp9iaz {
+    background-image: url(https://assets.tokopedia.net/assets-tokopedia-lite/v2/icarus/kratos/fd9c0d4d.svg);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.css-ypz3k2 {
+    background-image: url(https://assets.tokopedia.net/assets-tokopedia-lite/v2/icarus/kratos/1537526c.svg);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.css-83nb92 {
+    background-image: url(https://assets.tokopedia.net/assets-tokopedia-lite/v2/icarus/kratos/2e33670c.svg);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#image-upload {
+    width: 100%;
+    margin: auto;
+}
+
+#upload-zone {
+    min-height: 150px;
+    border: 2px dashed #a7a6ab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    flex: 1 1 100%;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 16px;
+}
+#upload-zone:hover {
+    border: 2px dashed #17a2b8;
+}
+/*placeholder tokped*/
+
+.product-hover:hover {
+    background-color: #00bf3f;
+}
+
 

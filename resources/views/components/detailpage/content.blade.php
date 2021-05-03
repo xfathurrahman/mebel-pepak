@@ -5,22 +5,22 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="carousel-inner bg-white">
-                            @foreach( $listproducts as $details )
-                                <div class="carousel-item image-zoom {{$loop->iteration == 1 ? 'active' : ''}}">
-                                    <img src="{{ asset("storage/product-image")."/".$details -> gambar }}"
+                            @foreach( $images as $image )
+                                <div class="carousel-item image-zoom {{ $loop->iteration == 1 ? 'active' : '' }}">
+                                    <img src="{{ asset("storage/product-image")."/".$image -> image_path }}"
                                          alt="" class="image-product-slide block mx-auto">
-                                    {{--<span class="sale-span">Sale</span>--}}
+                                    <span class="sale-span">Sale</span>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                     <div class="col-12 mt-2 mx-auto">
                         <div class="owl-carousel owl-carousel-detail owl-theme">
-                            @foreach( $listproducts as $details )
+                            @foreach( $images as $image )
                                 <div data-target="#productslider" data-slide-to="#i" class="active img-thumbnail-detail">
                                     <div class="item">
                                         <div class="data-slide-image">
-                                            <img src="{{ asset('storage/product-image').'/'.$details -> gambar }}"
+                                            <img src="{{ asset('storage/product-image').'/'.$image -> image_path }}"
                                                  alt="" class="img-thumb">
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                 <h3 class="product-name-detail">{{ $details -> nama }}</h3>
                 <p class="price">
                     <span class="old-price">Rp.200.000</span>
-                    <span class="new-price">{{ "Rp.".number_format( $details -> harga ) }}</span>
+                    <span class="new-price">@currency( $details -> harga )</span>
                 </p>
                 <hr>
                 <h5>Spesifikasi</h5>
@@ -74,16 +74,16 @@
         <section class="buyer-action">
                 <div class="wrap-info-action inline-flex">
                     <div class="tag-info-product inline-flex mr-2">
-                        <img src="{{ asset('storage/product-image').'/'.$details -> gambar }}"
+                        <img src="{{ asset('storage/product-image').'/'.$imagesthumb -> image_path }}"
                              alt="" class="w-10 h-10 rounded-md">
-                        <p>{{ $details -> nama }}dawdw dawda wdawda awa adw wadwad wadaaw wdawdwad dwadawd awdwaadwa wadawwd dwadawd da wdad wda dwada daw awdad wadwa awad</p>
+                        <p>{{ $details -> nama }}</p>
                     </div>
                 </div>
                 <div class="tag-contact-product inline-flex">
                     <i class="fas fa-circle-notch"></i>
                     <div class="bg-dark text-white text-center p-2 price-btn inline-flex">
                         <i class="fas fa-circle my-auto"></i>&nbsp;&nbsp;
-                        <p>{{ "Rp.".number_format( $details -> harga ) }}000.000.000</p>
+                        <p>@currency( $details -> harga )</p>
                     </div>
                     <button class="btn-buy btn contact-seller-btn" type="button">Hubungi Penjual</button>
                 </div>

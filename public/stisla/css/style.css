@@ -975,10 +975,8 @@ select.form-control:not([size]):not([multiple]) {
       border-radius: 5px;
  }
 
-.flex-column-product {
-    display: flex;
-    position: relative;
-    flex-wrap:wrap;
+.check-product {
+    float: left;
 }
 
 .dilihat{
