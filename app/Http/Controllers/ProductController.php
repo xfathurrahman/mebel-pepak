@@ -9,13 +9,21 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Validator;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $listproducts['listproducts'] = Product::with('categories','images','users')
+            ->orderBy('id','asc')
             ->where('user_id','=',Auth::user()->id)
             ->Paginate(7)
             ->onEachSide(2);
@@ -29,53 +37,104 @@ class ProductController extends Controller
         return view('pages.products.create')->with($listcategories);
     }
 
-    public function store(Request $request)
+    /**
+     * @throws ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
-        $user = Auth::user();
-        $data = $request->all();
-        $product = $user->products()->create($data);
+        Validator::make($request->all(), [
+            'nama'=>'required|string',
+            'kategori_id'=>'required',
+            'deskripsi'=>'required|string',
+            'files' => 'required',
+            'files.*' => 'mimes:jpeg,jpg,png,gif'
+        ])->validate();
 
-        $fileName = '';
-        if($request->image_path->getClientOriginalName()){
-            $file = str_replace(' ', '', $request->image_path->getClientOriginalName());
-            $fileName = date('mYdhs').rand(1,999).'_'.$file;
-            $request->image_path->storeAs('public/product-image', $fileName);
-        }
-        Image::create(array_merge($request->all(),[
-            'image_path' => $fileName,
-            'product_id' => $product -> id
-        ]));
-        return redirect('products');
+        $total_files = count($request->file('files'));
 
-/*        $fileName = '';
-        if($request->gambar->getClientOriginalName()){
-            $file = str_replace(' ', '', $request->gambar->getClientOriginalName());
-            $fileName = date('mYdhs').rand(1,999).'_'.$file;
-            $request->gambar->storeAs('public/product-image', $fileName);
-        }
-        Product::create(array_merge($request->all(),[
-            'gambar' => $fileName
-        ]));
-        return redirect('products');*/
+        $nama=$request->nama;
+        $harga=$request->harga;
+        $kategori_id=$request->kategori_id;
+        $deskripsi=$request->deskripsi;
 
-/*        $user = Auth::user();
-        $product = new Product();
-        $data = $request->all();
-        $product = $user->products()->create($data);
-        if($request->hasFile('product_id')){
-            $files = $request->file('product_id');
-            foreach ($files as $file){
-                $image_path = time().'_'.$file->getClientOriginalName();
-                $image_path = str_replace(' ','-',$image_path);
-                $file->move('product_image', $image_path);
-                $product->image()->create(['image_path'=>$image_path]);
+        $product  = new Product;
+        $product -> nama=$nama;
+        $product -> harga=$harga;
+        $product -> kategori_id=$kategori_id;
+        $product -> deskripsi=$deskripsi;
+        $product -> user_id=Auth::user()->id;
+        $product -> save();
+
+        $productId=$product->id;
+
+        if ($request->hasfile('files')) {
+            $files = $request->file('files');
+
+            foreach($files as $file) {
+                $image  = new Image;
+                $name   = time().'.'.$file->getClientOriginalName();
+                $path   = public_path('/storage/product-image');
+                $file  -> move($path, $name);
+                $image -> product_id=$productId;
+                $image -> image_path=$name;
+                $image -> save();
             }
         }
-        return redirect('products');*/
 
-
-
+        return back()->with("success", $total_files . " files uploaded successfully");
     }
+
+    /*$request->validate([
+            'imageFile' => 'required',
+            'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048'
+        ]);
+
+        if ($request->hasfile('imageFile')) {
+            foreach ($request->file('imageFile') as $file) {
+                $image_path = $file->getClientOriginalName();
+                $file->move(public_path() . '/product_image/', $image_path);
+                $imgData[] = $image_path;
+            }
+
+            $fileModal = new Image();
+            $fileModal->image_path = json_encode($imgData);
+
+            $user = Auth::user();
+            $data = $request->all();
+            $product = $user->products()->create($data);
+            $fileModal->product_id = $product -> id;
+
+            $fileModal->save();
+
+            return redirect('products')->with('success', 'Data Your files has been successfully added');
+
+        }*/
+
+    /*      $fileName = '';
+            if($request->gambar->getClientOriginalName()){
+                $file = str_replace(' ', '', $request->gambar->getClientOriginalName());
+                $fileName = date('mYdhs').rand(1,999).'_'.$file;
+                $request->gambar->storeAs('public/product-image', $fileName);
+            }
+            Product::create(array_merge($request->all(),[
+                'gambar' => $fileName
+            ]));
+            return redirect('products');*/
+
+    /*      $user = Auth::user();
+            $product = new Product();
+            $data = $request->all();
+            $product = $user->products()->create($data);
+            if($request->hasFile('product_id')){
+                $files = $request->file('product_id');
+                foreach ($files as $file){
+                    $image_path = time().'_'.$file->getClientOriginalName();
+                    $image_path = str_replace(' ','-',$image_path);
+                    $file->move('product_image', $image_path);
+                    $product->image()->create(['image_path'=>$image_path]);
+                }
+            }
+            return redirect('products');*/
 
     public function show($id)
     {

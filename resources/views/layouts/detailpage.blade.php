@@ -42,7 +42,7 @@
                 </div>
                 <!-- Main Content -->
                 <div class="main-content pt-32">
-                    <div class="container">
+                    <div class="container pt-2">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
@@ -56,7 +56,9 @@
                     </section>
                 </div>
                 <!-- Footer -->
-                @include('components.homepage.footer')
+                <div class="footerdetail">
+                    @include('components.homepage.footer')
+                </div>
                 <div class="spacer"></div>
             </div>
 

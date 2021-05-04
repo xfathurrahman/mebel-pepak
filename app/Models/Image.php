@@ -16,6 +16,8 @@ class Image extends Model
         'image_order',
     ];
 
+    protected $cast = ['image_path' => 'array'];
+
     public function products(): BelongsTo
     {
         return $this->belongsTo(Product::class,'product_id','id');

@@ -31,50 +31,26 @@
 
                             <div id="image-upload">
                                 <div id="upload-zone">
+                                    {{-- image --}}
+                                    @if($errors->has('files'))
+                                        <span class="float-right text-xl text-danger">{{ $errors->first('files') }}</span>
+                                    @endif
                                     <div class="form-group">
-                                    {{--<div class="placeholder inline-flex p-8">
-                                        <div class="css-n1y5a3" id="imgComponent-0">
-                                            <div class="css-kmq1n0" data-testid="imgAEPImgUploader">
-                                                <div class="css-1rd7url"></div>
-                                                <div class="css-17t9ldh">Utama</div>
-                                            </div>
-                                        </div>
-                                        <div class="css-s027nm" id="imgComponent-1">
-                                            <div class="css-kmq1n0" data-testid="imgAEPImgUploader">
-                                                <div class="css-1ohaj7u"></div>
-                                                <div class="css-17t9ldh">Depan</div>
-                                            </div>
-                                        </div>
-                                        <div class="css-s027nm" id="imgComponent-2">
-                                            <div class="css-kmq1n0" data-testid="imgAEPImgUploader">
-                                                <div class="css-1pp9iaz"></div>
-                                                <div class="css-17t9ldh">Samping</div>
-                                            </div>
-                                        </div>
-                                        <div class="css-s027nm" id="imgComponent-3">
-                                            <div class="css-kmq1n0" data-testid="imgAEPImgUploader">
-                                                <div class="css-ypz3k2"></div>
-                                                <div class="css-17t9ldh">Atas</div>
-                                            </div>
-                                        </div>
-                                        <div class="css-s027nm" id="imgComponent-4">
-                                            <div class="css-kmq1n0" data-testid="imgAEPImgUploader">
-                                                <div class="css-83nb92"></div>
-                                                <div class="css-17t9ldh">Detail</div>
-                                            </div>
-                                        </div>
+                                        <label>Image</label>
+                                        <input type="file" multiple name="files[]" class="form-control">
                                     </div>
-                                        <div class="btn-pilih-foto mb-2" >
-                                            <span>+ Pilih Gambar Produk</span>
-                                        </div>--}}
-                                        <label for="exampleInputFile">Foto Produk</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="files" name="image_path" multiple>
-                                                <label class="custom-file-label" for="files">Choose file</label>
-                                            </div>
+
+                                    <!-- print success message after file upload  -->
+                                    @if(Session::has('success'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success') }}
+                                            @php
+                                                Session::forget('success');
+                                            @endphp
                                         </div>
-                                    </div>
+                                    @endif
+
+                                    {{-- end image --}}
                                 </div>
                             </div>
                         </div>
@@ -89,14 +65,12 @@
                                 <div class="col-span-6">
                                     <label for="nama produk" class="block text-sm font-medium text-gray-700">Nama Produk</label>
                                     <input type="text" name="nama" id="nama produk" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+                                    @if($errors->has('nama'))
+                                        <span class="float-right text-danger">{{ $errors->first('nama') }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="grid grid-cols-6 gap-6">
-
-                                <div class="hidden">
-                                    <label for="userid" class="block text-sm font-medium text-gray-700">user id</label>
-                                    <input value="{{ Auth::user()->id }}" id="userid" name="user_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
 
                                 <div class="col-span-6 sm:col-span-6">
                                     <label for="price" class="block text-sm font-medium text-gray-700">
@@ -107,6 +81,9 @@
                                                         Rp.
                                                       </span>
                                         <input onkeypress="return onlyNumberKey(event)" type="number" name="harga" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" >
+                                        @if($errors->has('harga'))
+                                            <span class="float-right text-danger">{{ $errors->first('harga') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +91,9 @@
                             <div>
                                 <label for="description">Deskripsi</label>
                                 <textarea name="deskripsi" id="description" cols="30" rows="10"></textarea>
+                                @if($errors->has('deskripsi'))
+                                    <span class="float-right text-danger">{{ $errors->first('deskripsi') }}</span>
+                                @endif
                             </div>
 
                             <div class="grid grid-cols-6 gap-6">
@@ -125,6 +105,9 @@
                                             <option value="{{ $listcategory -> id }}">{{ $listcategory -> name }}</option>
                                         @endforeach
                                     </select>
+                                    @if($errors->has('kategori_id'))
+                                        <span class="float-right text-danger">{{ $errors->first('kategori_id') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="col-sp`an-3 sm:col-span-3">
@@ -135,19 +118,7 @@
                                         <input type="text" name="stock" id="stock" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                                     </div>
                                 </div>
-
                             </div>
-
-                            {{--<div class="form-group">
-                                <label for="exampleInputFile">Foto Produk</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>--}}
-
                         </div>
                         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

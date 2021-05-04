@@ -43,8 +43,8 @@
 
         <div class="main-footer-content">
             <div class="row">
-                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 justify-center align-middle mt-12">
-                    <div class="wrap-footer-item-new mt-2">
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 justify-center align-middle">
+                    <div class="wrap-footer-item-new mt-12">
                         <h3 style="font-weight: bold" class="item-header text-center">KONTAK ADMIN</h3>
                         <div class="item-content">
                             <div class="wrap-contact-detail text-center">

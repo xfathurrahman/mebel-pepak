@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/detaiproduk',[ProductDetailController::class,'index']);
-
 Route::resource('/', HomepageController::class);
 
 Route::get('detail/{slugusername}/{id}/{slug}', [DetailProductController::class,'index']);
@@ -42,10 +40,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelected');
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });
-
-Route::post('/save-image', [DetailProductController::class, 'save'])->name('save-image');
-Route::post('/save-image-order', [DetailProductController::class, 'saveImageOrder'])->name('save-image-order');
-Route::post('/delete-image', [DetailProductController::class, 'deleteImage'])->name('delete-image');
-Route::get('/delete-image-number-null', [DetailProductController::class, 'deleteImageWhereImageNumberNull']);
 
 /*Route::post('user/profile/upload', [ HeaderProfileController::class, 'upload'])->name('profile.crop');*/

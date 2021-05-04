@@ -1,6 +1,6 @@
 <!-- Navs -->
 <nav class="nav navbar-secondary justify-between text-sm">
-    <ul class="inline-flex mb-0">
+    <ul class="inline-flex mb-0 pl-0">
         <li class="nav-item">
             <a class="navdownloadapp nav-link text-gray-500" href="#"><i class="fas fa-mobile-alt">&nbsp;
                 </i>Download Horokpedia App</a>

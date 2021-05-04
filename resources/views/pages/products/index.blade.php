@@ -81,7 +81,7 @@
                                                     <p class="text-judul-product mb-1 leading-5 text-justify">{{ $listproduct->nama }}</p>
                                                 </div>
                                                     <img style="display: block; margin-left: auto; margin-right: auto;" class="img c-thumb" alt="image"
-                                                         data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct->images->image_path }}">
+                                                         data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct ->images->image_path }}">
                                             </a>
                                             <div>
                                                 <p class="mx-auto my-2">
