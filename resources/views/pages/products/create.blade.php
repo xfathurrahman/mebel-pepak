@@ -6,7 +6,7 @@
         </ol>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 form-upload">
 
         <div class="mx-auto">
             <h1 class="mt-5">Tambah Produk</h1>
@@ -29,9 +29,41 @@
                                 <p class="mb-0">Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 700 x 700 px).<br>Pilih foto produk atau tarik dan letakkan hingga 5 foto sekaligus di sini.
                             </div>
 
-                            <div id="image-upload">
+                            <div class="form-group">
+                                <div class="preview-zone hidden">
+                                    <div class="box box-solid">
+                                        <div class="box-header with-border">
+                                            <div><b>Preview</b></div>
+                                            <div class="box-tools pull-right">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-danger btn-xs remove-preview">
+                                                    <i class="fa fa-times"></i> Hapus Semua
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- print success message after file upload  -->
+                                        <div class="box-body"></div>
+                                    </div>
+                                </div>
+                                <div class="dropzone-wrapper">
+                                    <div class="dropzone-desc">
+                                        <i class="glyphicon glyphicon-download-alt"></i>
+                                        <div class="btn-pilih-foto mb-2" >
+                                            <span>+ Pilih Gambar Produk</span>
+                                        </div>
+                                        <div>atau tarik dan letakkan hingga 5 foto sekaligus di sini.</div>
+                                        @if($errors->has('files'))
+                                            <span class="text-center mt-5 text-xl text-danger">{{ $errors->first('files') }}</span>
+                                        @endif
+                                    </div>
+                                        <input type="file"  name="files[]" class="dropzone" multiple />
+                                </div>
+                            </div>
+
+                            {{--<div id="image-upload">
                                 <div id="upload-zone">
-                                    {{-- image --}}
+                                    --}}{{-- image --}}{{--
                                     @if($errors->has('files'))
                                         <span class="float-right text-xl text-danger">{{ $errors->first('files') }}</span>
                                     @endif
@@ -49,10 +81,10 @@
                                             @endphp
                                         </div>
                                     @endif
-
-                                    {{-- end image --}}
+                                    --}}{{-- end image --}}{{--
                                 </div>
-                            </div>
+                            </div>--}}
+
                         </div>
                     </div>
                 </div>
@@ -151,7 +183,78 @@
     }
 </script>
 
+<script>
+    function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function(e) {
+                var htmlPreview =
+                    '<img width="200" src="' +
+                    e.target.result +
+                    '" />' +
+                    "<p>" +
+                    input.files[0].name +
+                    "</p>";
+                var wrapperZone = $(input).parent();
+                var previewZone = $(input)
+                    .parent()
+                    .parent()
+                    .find(".preview-zone");
+                var boxZone = $(input)
+                    .parent()
+                    .parent()
+                    .find(".preview-zone")
+                    .find(".box")
+                    .find(".box-body");
+
+                wrapperZone.removeClass("dragover");
+                previewZone.removeClass("hidden");
+                boxZone.empty();
+                boxZone.append(htmlPreview);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function reset(e) {
+        e.wrap("<form>")
+            .closest("form")
+            .get(0)
+            .reset();
+        e.unwrap();
+    }
+
+    $(".dropzone").change(function() {
+        readFile(this);
+    });
+
+    $(".dropzone-wrapper").on("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).addClass("dragover");
+    });
+
+    $(".dropzone-wrapper").on("dragleave", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass("dragover");
+    });
+
+    $(".remove-preview").on("click", function() {
+        var boxZone = $(this)
+            .parents(".preview-zone")
+            .find(".box-body");
+        var previewZone = $(this).parents(".preview-zone");
+        var dropzone = $(this)
+            .parents(".form-group")
+            .find(".dropzone");
+        boxZone.empty();
+        previewZone.addClass("hidden");
+        reset(dropzone);
+    });
+</script>
 
 {{--<x-app-layout>
     <x-slot name="header_content">
@@ -160,26 +263,21 @@
             <li class="breadcrumb-item active"><a><i class="fas fa-cart-plus"></i> {{ __('Tambah Produk') }}</a></li>
         </ol>
     </x-slot>
-
     <div class="py-12">
-
         <div class="mx-auto">
             <h1 class="mt-5">Tambah Produk</h1>
             <p class="mb-0">Pastikan produk Anda sudah sesuai dengan syarat dan ketentuan Tokopedia. Tokopedia menghimbau seller untuk menjual produk dengar harga yang wajar atau produk Anda dapat diturunkan oleh Tokopedia sesuai S&K yang berlaku.</p>
         </div>
-
         <form method="POST" action="{{ route('products.store') }}" role="form" enctype="multipart/form-data">
             @csrf
                 <div class="mx-auto">
                     <div class="mt-5 md:mt-0 md:col-span-2">
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-
                                 <div class="image-up-text-head-wrapper">
                                     <h4>Upload Foto Produk</h4>
                                     <span>Wajib</span>
                                 </div>
-
                                 <div class="tips bg-whitesmoke p-3 rounded-md">
                                     <p>Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 700 x 700 px).
                                         <div class="inline-flex m-0 p-0">
@@ -187,7 +285,6 @@
                                         <p class="bg-blue-500 w-8 h-8 text-center text-white m-0 relative">1</p>
                                         </div>
                                 </div>
-
                                 <div id="image-upload-large-zone">
                                     <div id="iu-gallery"></div>
                                     <div id="iu-image-upload-zone">
@@ -222,7 +319,6 @@
                                                     <div class="css-17t9ldh">Detail</div>
                                                 </div>
                                             </div>
-
                                         </div>--}}{{--
                                         <div class="btn-pilih-foto mb-2" >
                                             <span>+ Pilih Gambar Produk</span>
@@ -244,12 +340,10 @@
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-6 gap-6">
-
                                     <div class="hidden">
                                         <label for="userid" class="block text-sm font-medium text-gray-700">user id</label>
                                         <input value="{{ Auth::user()->id }}" id="userid" name="user_id" class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                     </div>
-
                                     <div class="col-span-6 sm:col-span-6">
                                         <label for="price" class="block text-sm font-medium text-gray-700">
                                             Harga
@@ -262,12 +356,10 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div>
                                     <label for="description">Deskripsi</label>
                                     <textarea name="deskripsi" id="description" cols="30" rows="10"></textarea>
                                 </div>
-
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-3 sm:col-span-3">
                                         <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
@@ -278,7 +370,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-
                                     <div class="col-sp`an-3 sm:col-span-3">
                                         <label for="stock" class="block text-sm font-medium text-gray-700">
                                             Stok
@@ -287,9 +378,7 @@
                                             <input type="text" name="stock" id="stock" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleInputFile">Foto Produk</label>
                                     <div class="input-group">
@@ -309,19 +398,14 @@
                     </div>
                 </div>
         </form>
-
     </div>
-
 </x-app-layout>
-
 <script>
     tinymce.init({
         selector:"#description"
     });
 </script>
-
 <script src="{{ asset('js/4image-upload.js') }}"></script>
-
 <script id="jsNeedToCopy">
     //Detect Internet Explorer. Show alert to customer.
     if (window.document.documentMode) {
@@ -331,13 +415,10 @@
         imageUploadZoneId: 'iu-image-upload-zone',
         imageGalleryId: 'iu-gallery',
         sendRequestToServer: false,
-
         selectOrder: false,
-
         maxImageColumns :5,
         minImageColumns :2,
         minImageWidth :100,
-
         dictUploadImageNote: 'atau tarik dan letakkan hingga 5 gambar sekaligus di sini.',
         alertUploadingImage: function(fileLength) {
             var dictUploadingMessage;
@@ -360,7 +441,6 @@
             var spinner = document.createElement('div');
             spinner.className = 'iu-progress-spinner';
             imagePlaceHolder.appendChild(spinner);
-
             if (showUploadedPercentComplete === true) {
                 var percentDiv = document.createElement('div');
                 percentDiv.className = 'iu-percent-div';
@@ -374,12 +454,10 @@
             setSpinnerSize();
             window.addEventListener('resize', setSpinnerSize);
         },
-
         updateUploadingLoader: function(percentComplete, imageItem, showUploadedPercentComplete) {
             var percentBar = imageItem.getElementsByClassName('iu-percent-div')[0];
             percentBar.innerHTML = Math.floor(percentComplete) + "%";
         },
-
         removeUploadingLoader: function(imageItem, showUploadedPercentComplete) {
             var spinner = imageItem.getElementsByClassName('iu-progress-spinner')[0];
             fadeEffect(spinner);
@@ -402,7 +480,6 @@
                 }, 200);
             }
         },
-
         addFlashBox: function(showedAlertString, showedTime, backgroundColor) {
             var oldFlashBox = document.getElementsByClassName('iu-flash-box')[0];
             if (oldFlashBox) {
@@ -418,7 +495,6 @@
             setTimeout(function(){
                 fadeEffect(flashBox);
             }, showedTime);
-
             function fadeEffect(elmnt) {
                 var fadeEffect = setInterval(function () {
                     if (!elmnt.style.opacity) {
@@ -433,11 +509,9 @@
                 }, 50);
             }
         },
-
         deletingImageAlert: ['Menghapus gambar...', 30000],
         deletedImageAlert: ['Gambar telah dihapus.', 2000],
         savingImageOrderAlert: ['Menyimpan urutan gambar...', 30000],
         savedImageOrderAlert: ['Urutan gambar tersimpan.', 2000],
     });
 </script>--}}
-

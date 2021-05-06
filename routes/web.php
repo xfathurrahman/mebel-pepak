@@ -4,6 +4,7 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
@@ -37,8 +38,9 @@ Route::delete('/carousel/{id}', [CarouselController::class, 'destroy']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
-    Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelected');
+    Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelectedProduct');
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });
+Route::post('/dropzone', [ProductController::class,'dropzone'])->name('dropzone');
 
 /*Route::post('user/profile/upload', [ HeaderProfileController::class, 'upload'])->name('profile.crop');*/

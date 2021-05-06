@@ -975,9 +975,6 @@ select.form-control:not([size]):not([multiple]) {
       border-radius: 5px;
  }
 
-.check-product {
-    float: left;
-}
 
 .dilihat{
      left: 0;

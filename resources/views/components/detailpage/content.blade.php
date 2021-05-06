@@ -1,10 +1,10 @@
 <div class="container">
     <div id="productslider" class="carousel slide">
         <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-5 col-md-5">
                 <div class="row">
                     <div class="col-12">
-                        <div class="carousel-inner bg-white">
+                        <div class="carousel-inner mx-auto bg-white">
                             @foreach( $images as $image )
                                 <div class="carousel-item image-zoom {{ $loop->iteration == 1 ? 'active' : '' }}">
                                     <img src="{{ asset("storage/product-image")."/".$image -> image_path }}"
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-7 col-md-7">
                 <h3 class="product-name-detail">{{ $details -> nama }}</h3>
                 <p class="price">
                     <span class="old-price">Rp.200.000</span>
@@ -83,7 +83,7 @@
                     <i class="fas fa-circle-notch"></i>
                     <div class="bg-dark text-white text-center p-2 price-btn inline-flex">
                         <i class="fas fa-circle my-auto"></i>&nbsp;&nbsp;
-                        <p>@currency( $details -> harga )</p>
+                        <p style="min-width: 100px">@currency( $details -> harga )</p>
                     </div>
                     <button class="btn-buy btn contact-seller-btn" type="button">Hubungi Penjual</button>
                 </div>

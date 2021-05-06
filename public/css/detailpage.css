@@ -312,6 +312,7 @@
 
 .product-slider-section .carousel-inner {
     cursor: crosshair;
+    max-width: 400px;
     border-radius: 9px;
     overflow: hidden;
 }
@@ -326,6 +327,11 @@
 .owl-carousel-detail .item {
     margin: 0;
     padding: 0;
+}
+
+.owl-carousel-detail .owl-stage {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .owl-carousel-detail .img-thumb{
@@ -560,6 +566,10 @@
         z-index: 2;
     }
 
+    .bc .breadcrumb {
+        padding-top: 50px;
+    }
+
     .spacer {
         height: 120px;
     }
@@ -678,7 +688,7 @@
     text-decoration: none;
 }
 .main-content .breadcrumb .title-post {
-    width: 280px;
+    max-width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

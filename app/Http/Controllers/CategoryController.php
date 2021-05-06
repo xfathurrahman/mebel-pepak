@@ -24,11 +24,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $fileName = '';
+        // meyimpan di server
         if($request->image->getClientOriginalName()){
             $file = str_replace(' ', '', $request->image->getClientOriginalName());
             $fileName = date('mYdhs').rand(1,999).'_'.$file;
             $request->image->storeAs('public/category-image', $fileName);
         }
+        //menyimpan di db
         Category::create(array_merge($request->all(),[
             'slug' => Str::slug($request->name),
             'image' => $fileName

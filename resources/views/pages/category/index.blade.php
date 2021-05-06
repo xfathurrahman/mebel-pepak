@@ -65,8 +65,8 @@
                                 @foreach($listcategories as $listcategory)
                                     <tr id="cid{{$listcategory->id}}">
                                         <td style="width: 30%"  class="td p-0 pl-4 pb-2 text-center">
-                                            <div class="flex-column-product custom-control-child">
-                                                <label>
+                                            <div class="custom-control-child">
+                                                <label class="float-left">
                                                     <input name="ids"
                                                            id="checkSingle"
                                                            type="checkbox"

@@ -15,10 +15,6 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" id="deleteSelectedItem" href="#">Hapus Carousel yang dipilih</a>
-{{--                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Separated link</a>--}}
                         </div>
                     </div>
 
@@ -66,7 +62,7 @@
                                     <tr id="cid{{$carousel->id}}">
                                         <td style="width: 30%"  class="td p-0 pl-4 pb-2 text-center">
                                             <div class="flex-column-product custom-control-child">
-                                                <label>
+                                                <label class="float-left">
                                                     <input name="ids"
                                                            id="checkSingle"
                                                            type="checkbox"

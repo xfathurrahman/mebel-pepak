@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Image;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,17 +14,11 @@ use Validator;
 class ProductController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $listproducts['listproducts'] = Product::with('categories','images','users')
-            ->orderBy('id','asc')
             ->where('user_id','=',Auth::user()->id)
-            ->Paginate(7)
+            ->Paginate(10)
             ->onEachSide(2);
 
         return view('pages.products.index')->with($listproducts);
@@ -43,6 +36,64 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Validator::make($request->all(), [
+            'nama'=>'required|string',
+            'kategori_id'=>'required',
+            'deskripsi'=>'required|string',
+            'files' => 'required',
+            'files.*' => 'mimes:jpeg,jpg,png,gif'
+        ])->validate();
+
+        $nama=$request->nama;
+        $harga=$request->harga;
+        $kategori_id=$request->kategori_id;
+        $deskripsi=$request->deskripsi;
+
+        $product  = new Product;
+        $product -> nama=$nama;
+        $product -> harga=$harga;
+        $product -> kategori_id=$kategori_id;
+        $product -> deskripsi=$deskripsi;
+        $product -> user_id=Auth::user()->id;
+        $product -> save();
+
+        $productId=$product->id;
+
+        if ($request->hasfile('files')) {
+            $files = $request->file('files');
+
+            foreach($files as $file) {
+                $image  = new Image;
+                $name   = time().'.'.$file->getClientOriginalName();
+                $path   = public_path('/storage/product-image');
+                $file  -> move($path, $name);
+                $image -> product_id=$productId;
+                $image -> image_path=$name;
+                $image -> save();
+            }
+        }
+
+        return redirect('/products')->with("success", " Produk berhasi ditambahkan");
+    }
+
+    /*    public function dropzone(Request $request){
+
+        // menarik data gambar
+        $file = $request->file('file');
+        $name   = time().'.'.$file->getClientOriginalName();
+        $path   = public_path('/storage/product-image');
+        $file  -> move($path, $name);
+
+        $product = new Product();
+        $productId=$product->id;
+
+        Image::create([
+            'product_id' => $productId,
+            'image_path' => $name,
+            'image_order' => Auth::user()->id
+        ]);
+    }*/
+
+    /*Validator::make($request->all(), [
             'nama'=>'required|string',
             'kategori_id'=>'required',
             'deskripsi'=>'required|string',
@@ -81,8 +132,21 @@ class ProductController extends Controller
             }
         }
 
-        return back()->with("success", $total_files . " files uploaded successfully");
-    }
+        return back()->with("success", $total_files . " files uploaded successfully");*/
+
+    /*$image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('storage/product-image'),$imageName);
+
+        $imageUpload = new Image;
+        $imageUpload->filename = $imageName;
+        $imageUpload->save();
+
+        Image::create(array_merge($request->all(),[
+            'image_path' => $imageName
+        ]));
+
+        return redirect('products');*/
 
     /*$request->validate([
             'imageFile' => 'required',
@@ -161,10 +225,9 @@ class ProductController extends Controller
 //        return redirect('products')->with('status', 'Iklan berhasi dihapus.');
     }
 
-    public function deleteSelectedItem(Request $request): JsonResponse
+    public function deleteSelectedItem(Request $request)
     {
         $ids = $request->ids;
         Product::whereIn('id', $ids)->delete();
-        return response()->json(['success'=>"Produk anda berhasil dihapus!"]);
     }
 }

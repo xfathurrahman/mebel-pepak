@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="_token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -26,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('stisla/css/components.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropzone.min.css')}}">
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/4image-upload.css') }}">--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/4image-upload.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
 
