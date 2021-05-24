@@ -24,8 +24,9 @@
     <link rel="stylesheet" href="{{asset('stisla/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('stisla/css/components.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dropzone.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/4image-upload.css') }}">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    {{--<link rel="stylesheet" href="{{asset('css/dropzone.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/4image-upload.css') }}">--}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
 
@@ -36,7 +37,6 @@
 </head>
 
 <body class="font-sans antialiased sidebar-mini">
-
     <div id="app">
         <div class="main-wrapper">
             @include('components.dashboard.navigation-menu')
@@ -66,17 +66,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="{{ asset('stisla/js/stisla.js')}}"></script>
-
+        <script src="{{ asset('stisla/js/page/modules-sweetalert.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
-
         <script src="https://cdn.tiny.cloud/1/flyt6ym60hfvfgkqqebenxxsyetwj9ku6sa218qn3ri1gop4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js"></script>--}}
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
         <!-- JS Libraies -->
 
         <!-- Template Stisla JS File -->
         <script src="{{ asset('stisla/js/scripts.js')}}"></script>
         <script src="{{ asset('stisla/js/custom.js')}}"></script>
-        <script src="{{ asset('js/dropzone.min.js')}}"></script>
+        {{--<script src="{{ asset('js/dropzone.min.js')}}"></script>
+        <script src="{{ asset('js/fine-uploader.min.js')}}"></script>--}}
+        <script src="{{ asset('js/image-uploader.js')}}"></script>
         <!-- Page Specific JS File -->
     </div>
 </body>

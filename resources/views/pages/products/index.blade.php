@@ -48,8 +48,6 @@
 
                 </div>
 
-
-
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="mytable table-striped p-0">
@@ -104,12 +102,12 @@
                                                            class="checkSingle rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                                            value="{{ $listproduct -> id }}">
                                                 </label>
-                                                <a class="text-decoration-none text-black" href="{{ url( 'detail/'.Str::slug($listproduct->users->name).'/'.$listproduct -> id.'/'.Str::slug($listproduct->nama) ) }}">
+                                                <a class="text-decoration-none text-black" href="{{ url( 'detail/'.Str::slug($listproduct->users->name).'/'.$listproduct -> id.'/'.Str::slug($listproduct->name) ) }}">
                                                     <div style="margin: 2px 0 0 30px;">
-                                                        <p class="text-judul-product mb-1 leading-5 text-justify">{{ $listproduct->nama }}</p>
+                                                        <p class="text-judul-product mb-1 leading-5 text-justify">{{ $listproduct->name }}</p>
                                                     </div>
                                                     <img style="display: block; margin-left: auto; margin-right: auto;" class="img c-thumb" alt="image"
-                                                         data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct-> images -> image_path }}">
+                                                         data-toggle="tooltip" title=""  src="{{ asset("storage/product-image")."/".$listproduct -> images -> image_path }}">
                                                 </a>
                                             </div>
                                             <div>
@@ -127,7 +125,7 @@
                                             <div class="badge badge-success">{{ $listproduct-> categories -> name }}</div>
                                         </td>
                                         <td class="text-center">
-                                            @currency($listproduct->harga)
+                                            @currency($listproduct->price)
                                         </td>
                                         <td class="text-center">
                                             <div class="badge badge-success">100</div>

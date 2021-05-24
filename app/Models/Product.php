@@ -14,12 +14,11 @@ class Product extends Model
 
     protected $fillable = [
         'user_id',
-        'nama',
-        'harga',
-        'deskripsi',
-        'kategori_id',
+        'name',
+        'price',
+        'description',
+        'category_id',
     ];
-
 
     public function users(): BelongsTo
     {
@@ -28,7 +27,7 @@ class Product extends Model
 
     public function categories(): BelongsTo
     {
-        return $this->belongsTo(Category::class,'kategori_id', 'id');
+        return $this->belongsTo(Category::class,'category_id', 'id');
     }
 
     public function images(): HasOne

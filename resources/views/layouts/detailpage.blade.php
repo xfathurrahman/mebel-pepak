@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailpage.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/homepage.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/ecommerce-template.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/footer-main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/easyzoom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
@@ -25,56 +25,43 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- CSS Libraries -->
 </head>
-<body>
-        <div id="detailpage">
-            <div class="main-wrapper">
-                <!-- Header -->
-                <div class="fixed header-nav w-full mr-0">
-                    @include('components.homepage.navs-menu')
-                    @include('components.homepage.navbar-menu')
-                </div>
-                <!-- Dekorasi -->
-                <div class="dekor left-0">
-                    <img class="mt-10" src="{{ asset('storage/assets/tupat.png') }}" alt="tupat">
-                </div>
-                <div class="dekor2 right-0 left-auto">
-                    <img class="mt-10" src="{{ asset('storage/assets/tupat.png') }}" alt="tupat">
-                </div>
-                <!-- Main Content -->
-                <div class="main-content pt-32">
-                    <div class="container bc">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">{{ $details -> categories -> name }}</a></li>
-                                <li class="breadcrumb-item title-post active" aria-current="page">{{ $details -> nama }}</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <section class="product-slider-section">
-                        @include('components.detailpage.content')
-                    </section>
-                </div>
-                <!-- Footer -->
-                <div class="footerdetail">
-                    @include('components.homepage.footer')
-                </div>
-                <div class="spacer"></div>
+    <body class="font-sans antialiased">
+        <div class="main-wrapper">
+            <!-- Header -->
+            <div class="fixed top-0 header-nav w-full mr-0">
+                @include('components.navs-menu')
+                @include('components.navbar-menu')
             </div>
-
-            <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
-
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-            <!-- Scripts -->
-            <!-- Scripts Url -->
-            <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
-
+            <!-- Main Content -->
+            <div class="main-content">
+                @include('components.detailpage.breadcrumb')
+                <section class="product-slider-section">
+                    @include('components.detailpage.content')
+                </section>
+            </div>
+            <div class="wrap-main-footer p-0 m-0 bg-dark">
+                <!-- Footer -->
+                @include('components.footer')
+                <div class="spacer bg-dark m-0 p-0"></div>
+            </div>
         </div>
+
+        <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
+        <script src="{{ asset('js/4image-upload.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('.first ol li a').click(function () {
+                    $('.first ol li a.active-1').removeClass('active-1');
+                    $(this).closest('a').addClass('active-1');
+                });
+            });
+        </script>
 
         {{--Carousel Thumbnail--}}
         <script>
@@ -88,9 +75,33 @@
                     paginationSpeed: 200,
                     slideSpeed: 100,
                     mouseDrag: false,
-                    touchDrag: true,
+                    touchDrag: false,
                     dots:false,
-                    /*navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],*/
+                    navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+                    responsive:{
+                        350:{
+                            items:3,
+                            nav:true,
+                            mouseDrag: true,
+                            touchDrag: true,
+                        },
+                        768:{
+                            items:3,
+                            nav:true,
+                            mouseDrag: true,
+                            touchDrag: true,
+                        },
+                        1200:{
+                            items:4,
+                            nav:true,
+                            mouseDrag: true,
+                            touchDrag: true,
+                        },
+                        1500:{
+                            items:5,
+
+                        }
+                    }
                 })
             });
         </script>
@@ -116,8 +127,6 @@
             });
         </script>
         {{--Image Upload--}}
-        <script src="{{ asset('js/4image-upload.js') }}"></script>
 
-
-</body>
+    </body>
 </html>

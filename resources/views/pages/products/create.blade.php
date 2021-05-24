@@ -13,7 +13,7 @@
             <p class="mb-0">Pastikan produk Anda sudah sesuai dengan syarat dan ketentuan Tokopedia. Tokopedia menghimbau seller untuk menjual produk dengar harga yang wajar atau produk Anda dapat diturunkan oleh Tokopedia sesuai S&K yang berlaku.</p>
         </div>
 
-        <form method="POST" action="{{ route('products.store') }}" role="form" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('products.store') }}" name="form-example-1" id="form-example-1" role="form" enctype="multipart/form-data">
             @csrf
             <div class="mx-auto">
                 <div class="mt-5 md:mt-0 md:col-span-2">
@@ -29,61 +29,9 @@
                                 <p class="mb-0">Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 700 x 700 px).<br>Pilih foto produk atau tarik dan letakkan hingga 5 foto sekaligus di sini.
                             </div>
 
-                            <div class="form-group">
-                                <div class="preview-zone hidden">
-                                    <div class="box box-solid">
-                                        <div class="box-header with-border">
-                                            <div><b>Preview</b></div>
-                                            <div class="box-tools pull-right">
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-danger btn-xs remove-preview">
-                                                    <i class="fa fa-times"></i> Hapus Semua
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <!-- print success message after file upload  -->
-                                        <div class="box-body"></div>
-                                    </div>
-                                </div>
-                                <div class="dropzone-wrapper">
-                                    <div class="dropzone-desc">
-                                        <i class="glyphicon glyphicon-download-alt"></i>
-                                        <div class="btn-pilih-foto mb-2" >
-                                            <span>+ Pilih Gambar Produk</span>
-                                        </div>
-                                        <div>atau tarik dan letakkan hingga 5 foto sekaligus di sini.</div>
-                                        @if($errors->has('files'))
-                                            <span class="text-center mt-5 text-xl text-danger">{{ $errors->first('files') }}</span>
-                                        @endif
-                                    </div>
-                                        <input type="file"  name="files[]" class="dropzone" multiple />
-                                </div>
+                            <div class="input-field">
+                                <div class="input-images-1"></div>
                             </div>
-
-                            {{--<div id="image-upload">
-                                <div id="upload-zone">
-                                    --}}{{-- image --}}{{--
-                                    @if($errors->has('files'))
-                                        <span class="float-right text-xl text-danger">{{ $errors->first('files') }}</span>
-                                    @endif
-                                    <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" multiple name="files[]" class="form-control">
-                                    </div>
-
-                                    <!-- print success message after file upload  -->
-                                    @if(Session::has('success'))
-                                        <div class="alert alert-success">
-                                            {{ Session::get('success') }}
-                                            @php
-                                                Session::forget('success');
-                                            @endphp
-                                        </div>
-                                    @endif
-                                    --}}{{-- end image --}}{{--
-                                </div>
-                            </div>--}}
 
                         </div>
                     </div>
@@ -95,10 +43,10 @@
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div class="grid grid-cols-3 gap-6">
                                 <div class="col-span-6">
-                                    <label for="nama produk" class="block text-sm font-medium text-gray-700">Nama Produk</label>
-                                    <input type="text" name="nama" id="nama produk" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
-                                    @if($errors->has('nama'))
-                                        <span class="float-right text-danger">{{ $errors->first('nama') }}</span>
+                                    <label for="nama-produk" class="block text-sm font-medium text-gray-700">Nama Produk</label>
+                                    <input type="text" name="name" id="nama-produk" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+                                    @if($errors->has('name'))
+                                        <span class="float-right text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -112,9 +60,9 @@
                                                       <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                                         Rp.
                                                       </span>
-                                        <input onkeypress="return onlyNumberKey(event)" type="number" name="harga" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" >
-                                        @if($errors->has('harga'))
-                                            <span class="float-right text-danger">{{ $errors->first('harga') }}</span>
+                                        <input onkeypress="return onlyNumberKey(event)" type="number" name="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" >
+                                        @if($errors->has('price'))
+                                            <span class="float-right text-danger">{{ $errors->first('price') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -122,23 +70,23 @@
 
                             <div>
                                 <label for="description">Deskripsi</label>
-                                <textarea name="deskripsi" id="description" cols="30" rows="10"></textarea>
-                                @if($errors->has('deskripsi'))
-                                    <span class="float-right text-danger">{{ $errors->first('deskripsi') }}</span>
+                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                @if($errors->has('description'))
+                                    <span class="float-right text-danger">{{ $errors->first('description') }}</span>
                                 @endif
                             </div>
 
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-3 sm:col-span-3">
                                     <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
-                                    <select id="category" name="kategori_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <select id="category" name="category_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                         <option value=""> --Pilih Kategori-- </option>
                                         @foreach( $listcategories as $listcategory )
                                             <option value="{{ $listcategory -> id }}">{{ $listcategory -> name }}</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('kategori_id'))
-                                        <span class="float-right text-danger">{{ $errors->first('kategori_id') }}</span>
+                                    @if($errors->has('category_id'))
+                                        <span class="float-right text-danger">{{ $errors->first('category_id') }}</span>
                                     @endif
                                 </div>
 
@@ -150,6 +98,7 @@
                                         <input type="text" name="stock" id="stock" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -184,75 +133,10 @@
 </script>
 
 <script>
-    function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                var htmlPreview =
-                    '<img width="200" src="' +
-                    e.target.result +
-                    '" />' +
-                    "<p>" +
-                    input.files[0].name +
-                    "</p>";
-                var wrapperZone = $(input).parent();
-                var previewZone = $(input)
-                    .parent()
-                    .parent()
-                    .find(".preview-zone");
-                var boxZone = $(input)
-                    .parent()
-                    .parent()
-                    .find(".preview-zone")
-                    .find(".box")
-                    .find(".box-body");
-
-                wrapperZone.removeClass("dragover");
-                previewZone.removeClass("hidden");
-                boxZone.empty();
-                boxZone.append(htmlPreview);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function reset(e) {
-        e.wrap("<form>")
-            .closest("form")
-            .get(0)
-            .reset();
-        e.unwrap();
-    }
-
-    $(".dropzone").change(function() {
-        readFile(this);
-    });
-
-    $(".dropzone-wrapper").on("dragover", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).addClass("dragover");
-    });
-
-    $(".dropzone-wrapper").on("dragleave", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).removeClass("dragover");
-    });
-
-    $(".remove-preview").on("click", function() {
-        var boxZone = $(this)
-            .parents(".preview-zone")
-            .find(".box-body");
-        var previewZone = $(this).parents(".preview-zone");
-        var dropzone = $(this)
-            .parents(".form-group")
-            .find(".dropzone");
-        boxZone.empty();
-        previewZone.addClass("hidden");
-        reset(dropzone);
+    $('.input-images-1').imageUploader({
+        imagesInputName: 'files',
+        maxSize: 2 * 1024 * 1024,
+        maxFiles: 5
     });
 </script>
 

@@ -41,6 +41,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelectedProduct');
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });
+
+Route::post('products/media', [ProductController::class,'storeMedia'])
+    ->name('products.storeMedia');
+
 Route::post('/dropzone', [ProductController::class,'dropzone'])->name('dropzone');
 
 /*Route::post('user/profile/upload', [ HeaderProfileController::class, 'upload'])->name('profile.crop');*/

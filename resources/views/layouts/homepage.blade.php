@@ -13,8 +13,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ecommerce-template.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer-main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    {{-- owl.theme.default.css untuk navigasi --}}
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}"/>
     <!-- General CSS Files -->
@@ -24,49 +25,39 @@
     <!-- CSS Libraries -->
 
 </head>
-    <body class="body font-sans antialiased">
-        <div id="homepage">
-            <div class="main-wrapper">
-                <!-- Header -->
-                <div class="fixed header-nav w-full mr-0">
-                    @include('components.homepage.navs-menu')
-                    @include('components.homepage.navbar-menu')
-                </div>
-                <div class="dekor left-0">
-                    <img class="mt-10" src="{{ asset('storage/assets/tupat.png') }}" alt="tupat">
-                </div>
-                <div class="dekor2 right-0 left-auto">
-                    <img class="mt-10" src="{{ asset('storage/assets/tupat.png') }}" alt="tupat">
-                </div>
-                <!-- Carousel -->
-                <div class="carousel-promo carousel container-lg pt-32 px-0">
-                    @include('components.homepage.carousel')
-                    <div class="btn-seeall-carousel">
-                        <a href="{{ url('new-products') }}" class="button float-right">Lihat Semua</a>
-                    </div>
-                </div>
-                <!-- Main Content -->
-                <div class="main-content">
-                    <section class="section">
-                        <div class="section-body text-center">
-                            @include('components.homepage.content')
-                        </div>
-                    </section>
-                </div>
-                <!-- Footer -->
-                @include('components.homepage.footer')
+    <body class="font-sans antialiased">
+        <div class="main-wrapper">
+            <!-- Header -->
+            <div class="fixed top-0 header-nav w-full mr-0">
+                @include('components.navs-menu')
+                @include('components.navbar-menu')
             </div>
-
-            <!-- Scripts -->
-            <script src="{{ mix('js/app.js') }}" defer></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
-                /*local script*/
-            </script><script src="{{ asset('js/owl.carousel.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
-
+            <!-- Carousel -->
+            <div class="main-carousel-promo carousel container px-0">
+                @include('components.homepage.carousel')
+                <div class="btn-seeall-carousel">
+                    <a href="{{ url('new-products') }}" class="button float-right">Lihat Semua</a>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="main-content">
+                <section class="section">
+                    <div class="section-body text-center">
+                        @include('components.homepage.content')
+                    </div>
+                </section>
+            </div>
+            <!-- Footer -->
+            @include('components.footer')
         </div>
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/owl.carousel.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
 
         {{--CHECKBOX--}}
         <script>
@@ -82,12 +73,13 @@
                     center: true,
                     items:2,
                     loop:true,
-                    // stagePadding: 50,
-                    // margin: 10,
+                    /*stagePadding: 70,
+                    margin: 10,*/
                     autoplay: true,
                     autoplayHoverPause:true,
                     autoplayTimeout: 5000,
                     delay: 1000,
+                    dots: true,
                     smartSpeed: 1000,
                     navText : ['<i class="fa iconleft fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
                     nav:true,
@@ -121,55 +113,19 @@
                 nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
                 responsive: [
                     {
-                        breakpoint: 1080,
+                        breakpoint: 850,
                         settings: {
                             slidesToShow: 6,
                             slidesToScroll: 6,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 900,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5,
-                            dots: true
                         }
                     },
                     {
                         breakpoint: 650,
                         settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 550,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 450,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 200,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
+                            slidesToShow: 5,
+                            slidesToScroll: 5,
                         }
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
                 ]
             });
 
@@ -180,7 +136,7 @@
                 $('.sc-products-carousel').owlCarousel({
                     loop:false,
                     center: false,
-                    margin:10,
+                    margin:3,
                     lazyLoad:true,
                     autoWidth:true,
                     nav:true,
@@ -189,17 +145,50 @@
                     navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
                     dots:false,
                     responsive:{
-                        0:{
+                        350:{
                             items:2,
                             slideBy:2,
+                            margin:5,
                         },
                         600:{
-                            items:3,
-                            slideBy:3
+                            items:4,
+                            slideBy:4
                         },
                         1000:{
                             items:5,
                             slideBy:5
+                        }
+                    }
+                })
+            });
+        </script>
+        {{--CAROUSEL ADS--}}
+        <script>
+            $(document).ready(function(){
+                $('.carousel-ads').owlCarousel({
+                    center: true,
+                    items:2,
+                    loop:true,
+                    stagePadding: 70,
+                    margin: 10,
+                    autoplay: true,
+                    autoplayHoverPause:true,
+                    autoplayTimeout: 5000,
+                    delay: 1000,
+                    smartSpeed: 1000,
+                    dots: false,
+                    navText : ['<i class="fa iconleft fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+                    nav:false,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav: false
+                        },
+                        600:{
+                            items:1,
+                        },
+                        1000:{
+                            items:1,
                         }
                     }
                 })

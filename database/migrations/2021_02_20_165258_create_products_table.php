@@ -17,10 +17,16 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('nama');
-            $table->bigInteger('harga');
-            $table->string('deskripsi');
-            $table->string('kategori_id');
+            $table->string('name');
+            $table->bigInteger('price');
+            $table->string('description');
+            $table->string('category_id');
+            /*$table->bigInteger('discount');
+            $table->string('quantity');
+            $table->string('weight');
+            $table->string('youtube_link');
+            $table->enum('status_price', ['nego', 'nett']);
+            $table->enum('product_status', ['baru', 'bekas']);*/
             $table->softDeletes();
             $table->timestamps();
         });

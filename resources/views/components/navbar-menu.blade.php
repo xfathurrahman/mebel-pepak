@@ -1,40 +1,40 @@
 <!-- Navbar -->
-<nav class="navbar navbar-primary navbar-expand-lg px-0">
+<nav class="navbar navbar-primary px-2 navbar-expand-lg inline-flex p-0 justify-content-between">
 
-    <div class="navleft navbar mr-auto pl-0 py-0">
-        <div class="navbar-brand navbrand-homepage d-flex flex-column text-white rounded-lg mr-0 px-2 flex-column text-center" data-toggle="collapse">
-            <span class="px-2 d-sm-inline mt-1"><a href="{{ url('/') }}">HorokNiaga</a></span>
+    <div class="navleft navbar p-0">
+        <div class="navbar-brand navbrand-homepage d-flex flex-column text-white rounded-lg ml-1 mr-0 flex-column text-center" data-toggle="collapse">
+            <a href="{{url('/')}}"><img src="{{ asset('storage/assets/hn.png') }}" class="navbrand-img" alt="hn"></a>
+            <span class="navbrand-text"><a href="{{ url('/') }}">HorokNiaga</a></span>
         </div>
 
-        <form class="inline-flex searchhomepage">
+        <div class="py-1 px-1">
+            <div class="border-t border-transparent"></div>
+        </div>
+
+        <form class="inline-flex">
             <input class="form-control" type="search" placeholder="Mau cari apa?" aria-label="Search">
             <button class="btn btn-dark" type="submit">Cari</button>
         </form>
-
-        @if(Route::has('login'))
-            @auth
-            @else
-                <!-- account toggle -->
-                    <button class="navbar-toggler account-auth-toggler" type="button" data-toggle="collapse" data-target="#account"
-                            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-user"></i>
-                    </button>
-                @endauth
-            @endif
     </div>
 
-    <div class="navright navbar navbar-right 2xl:max-w-sm p-0">
+    <div class="navright navbar p-1 m-0">
         @if(Route::has('login'))
             @auth
-                <a href="#"class="nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
+                <a href="{{ route('products.create') }}" class="rounded-lg" style="text-decoration: none">
+                    <div class="navright-item nav-link d-flex flex-column text-white px-2 flex-column text-center" data-toggle="collapse">
+                        <span class="fas fa-plus"></span>
+                        <span class="navright-text px-2 d-none d-sm-inline mt-1">Jual</span>
+                    </div>
+                </a>
+                <a href="#" class="navright-item nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
                     <span class="fas fa-heart fa-lg"></span>
                     <span class="navright-text px-2 d-none d-sm-inline mt-1">Favorit</span>
                 </a>
-                <a href="#" class="nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
+                <a href="#" class="navright-item nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
                     <span class="fas fa-bell fa-lg"></span>
                     <span class="navright-text px-2 d-none d-sm-inline mt-1">Notifikasi</span>
                 </a>
-                <a href="#" class="nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
+                <a href="#" class="navright-item nav-link d-flex flex-column text-white rounded-lg px-2 flex-column text-center" data-toggle="collapse">
                     <span class="fas fa-envelope fa-lg"></span>
                     <span class="navright-text px-2 d-none d-sm-inline mt-1">Pesan</span>
                 </a>
@@ -92,23 +92,35 @@
                     </x-jet-dropdown>
                 </div>
             @else
-                <div class="collapse btn-auth-guest navbar-collapse" id="account">
-                    <ul class="navbar-nav btn-auth ml-auto text-center inline-block">
-                        @if (Route::has('login'))
-                            @auth
-                            @else
-                                <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-masuk w-full">Masuk</a>
-                                </li>
-                                <li class="py-1 px-1">
-                                    <div class="border-t border-transparent"></div>
-                                </li>
-                                @if (Route::has('register'))
-                                    <li class="nav-item reg-btn"><a href="{{ route('register') }}" class="btn btn-daftar w-full">Mendaftar</a>
-                                    </li>
-                                @endif
-                            @endauth
-                        @endif
-                    </ul>
+            <!-- account toggle -->
+                <div class="btn-auth-guest">
+                    <a href="{{ route('login') }}" class="w-full btn-a">
+                        <button class="blob-btn">
+                            Masuk
+                            <span class="blob-btn__inner">
+                                  <span class="blob-btn__blobs">
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                  </span>
+                                </span>
+                        </button>
+                    </a>
+                    <div class="py-1 px-1">
+                        <div class="border-t border-transparent"></div>
+                    </div>
+                    <a href="{{ route('register') }}" class="w-full btn-a">
+                        <button class="blob-btn">
+                            Mendaftar
+                            <span class="blob-btn__inner">
+                                  <span class="blob-btn__blobs">
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                  </span>
+                                </span>
+                        </button>
+                    </a>
                 </div>
             @endauth
         @endif
