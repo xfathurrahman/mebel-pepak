@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="productslider" class="carousel slide">
+    <div id="productslider" class="carousel" data-interval="false">
         <div class="row">
 
             <div class="col-lg-5 col-md-12">
@@ -11,12 +11,12 @@
                                 <div id="zoom" class="carousel-item image-zoom {{ $loop->iteration == 1 ? 'active' : '' }}">
                                     <img src="{{ asset("storage/product-image")."/".$image -> image_path }}"
                                          alt="" class="image-product-slide block mx-auto">
-                                    <span class="sale-span">&nbsp;&nbsp;Diskon</span>
+                                    <span class="sale-span text-uppercase">&nbsp;&nbsp;Nego</span>
                                 </div>
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-10 mt-2.5 mx-auto">
+                    <div class="col-12 mt-2.5 mx-auto" style="padding: 0">
                         <div class="owl-carousel owl-carousel-detail owl-theme">
                             @foreach( $images as $image )
                                 <button type="button" data-target="#productslider" data-slide-to="#i" class="active img-thumbnail-detail btn btn-outline-success">
@@ -35,43 +35,92 @@
             </div>
 
             <div class="col-lg-7 col-md-12 product-detail-column">
-                <h3 class="product-name-detail">{{ $details -> name }}dawawawawawawawawawawawawawawawawawawawawawawawawawawawawawawawaw</h3>
-                <p class="price">
-                    <span class="old-price">Rp.200.000</span>
-                    <span class="new-price">@currency( $details -> price )</span>
-                </p>
+                <h3 class="product-name-detail">Essential Oil - Bonnels - Nite Oil - Tidur Nyenyak & Rilexsasi mantap sekal</h3>
 
-                <hr>
+                <hr style="margin: 10px 0;">
 
-                <h5>Detail Iklan</h5>
+                <div class="price-wrapper">
+                    <div class="price">@currency( $details -> price )</div>
+                    <div class="item-wrapper">
+                        <div class="price-item text-uppercase my-1">
+                            {{--NETT ( Harga sudah tidak bisa di tawar )--}}
+                            NEGO ( Harga bisa di tawar )
+                            {{--<span class="diskon">diskon</span>
+                            <span>75%</span>--}}
+                        </div>
+                        {{--<div class="original-price">
+                            <span class="diskon">Harga sebelum diskon </span>
+                            <span>Rp. 12.000.000</span>
+                        </div>--}}
+                    </div>
+                </div>
+
+                <hr style="margin: 10px 0;">
+
+                <h5>Spesifikasi</h5>
                 <div class="row">
-                    <div class="col-6">
-                        <ol>
+                    <div class="col-3 text-gray-400">
+                        <ol class="p-0 m-0">
                             <li>Kategori</li>
                             <li>Kondisi</li>
                             <li>Berat</li>
+                            <li>Stok</li>
                         </ol>
                     </div>
-                    <div class="col-6">
-                        <ol>
-                            <li>: {{ $details -> categories -> name }}</li>
+                    <div class="col-9">
+                        <ol class="p-0 m-0">
+                            <li>: <a class="font-weight-800 text-red-400 hover:text-red-500 font-weight-bold" style="text-decoration: none" href="#">{{ $details -> categories -> name }}</a></li>
                             <li>: Baru </li>
                             <li>: 1kg</li>
+                            <li>: 12</li>
                         </ol>
                     </div>
                 </div>
 
-                <div class="main-detail-seller py-4 bg-white rounded-md">
+                <hr style="margin: 10px 0 7.7px 0;">
+
+                <div class="row text-center ads-action">
+                    <div class="col-4">
+                        <a href="#">
+                            <div class="share-ads text-center">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Bagikan Iklan</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="#">
+                            <div class="add-to-fav text-center">
+                                <i class="far fa-heart"></i>
+                                <span>Tambah ke Favorit</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="#">
+                            <div class="report-ads text-center">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Laporkan Iklan</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <hr style="margin: 7.7px 0 10px 0;">
+
+                <div class="main-detail-seller bg-white rounded-md">
 
                     <div class="row" style="padding: 0 15px !important; margin: 0!important;">
                         <div class="col-2 img-seller">
                             <a href="#">
-                                <img class="m-0 rounded-full" src="{{ $details -> users -> profile_photo_url }}" alt="{{ $details -> users -> name }}" />
+                                <img class="m-0 rounded-full right-tooltip" title="Lihat Profile Penjual" src="{{ $details -> users -> profile_photo_url }}" alt="{{ $details -> users -> name }}" />
                             </a>
                         </div>
                         <div class="col-8" style="padding: 0 0 0 15px !important;">
                             <div class="detail-seller my-auto">
-                                <a class="text-uppercase" href="#">{{ $details -> users -> name }}</a>
+                                <span class="text-uppercase right-tooltip" title="Lihat Profile Penjual">
+                                    <a href="#">{{ $details -> users -> name }}</a>
+                                </span>
                                 <span><i class="fas fa-map-marker-alt">&emsp;&nbsp;&nbsp;</i>Winong</span>
                                 <span><i class="fas fa-business-time">&emsp;</i>Bergabung sejak Juni 2021</span>
                             </div>
@@ -109,33 +158,6 @@
                         </div>
                     </div>
 
-                    <div class="row text-center mt-3 ads-action">
-                        <div class="col-4" style="padding: 0 !important;">
-                            <a href="#">
-                                <div class="share-ads">
-                                    <i class="fas fa-share-alt">&emsp;</i>
-                                        Bagikan
-                                    <p class="float-right" style="margin-right: -3px">|</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-4" style="padding: 0 !important;">
-                            <a href="#">
-                                <div class="add-to-fav">
-                                    <i class="far fa-heart">&emsp;</i>+ Favorit
-                                    <p class="float-right" style="margin-right: -3px">|</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-4" style="padding: 0 !important;">
-                            <a href="#">
-                                <div class="report-ads">
-                                    <i class="fas fa-exclamation-triangle">&emsp;</i>Laporkan
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -143,26 +165,28 @@
         </div>
     </div>
 
-    <hr style="margin-top: 8px; margin-bottom: 0">
+    <hr style="margin: 10px 0 0 0;">
 
-    <div class="row" id="tab-row">
-        <div class="col-lg-12 col-md-12">
-            <div class="tabs">
-                <div class="tab-header">
-                    <div onclick="smoothScroll(document.getElementById('tab-row'))" class="active"><i class="fas fa-file-signature" style="margin-left: -10px" aria-hidden="true"></i>&emsp;Deskripsi</div>
-                    <div onclick="smoothScroll(document.getElementById('tab-row'))"><i class="fas fa-comments-dollar" aria-hidden="true"></i>&emsp;Komentar</div>
-                    <div onclick="smoothScroll(document.getElementById('tab-row'))">&emsp;<i class="fa fa-map-marked-alt" aria-hidden="true"></i>&emsp;Lokasi</div>
-                </div>
-                <div class="tab-indicator"></div>
-                <div class="tab-body">
-                    <div class="active">
-                        <p>{{ $details -> description }}Quinoa can be rubed with quartered raspberries, also try tossing the fritters with red wine.</p>
+    <div class="product-details-desc">
+        <div class="row" id="tab-row">
+            <div class="col-lg-12 col-md-12">
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div onclick="smoothScroll(document.getElementById('tab-row'))" class="active"><i class="fas fa-file-signature" style="margin-left: -10px" aria-hidden="true"></i>&emsp;Deskripsi</div>
+                        <div onclick="smoothScroll(document.getElementById('tab-row'))"><i class="fas fa-comments-dollar" aria-hidden="true"></i>&emsp;Komentar</div>
+                        <div onclick="smoothScroll(document.getElementById('tab-row'))">&emsp;<i class="fa fa-map-marked-alt" aria-hidden="true"></i>&emsp;Lokasi</div>
                     </div>
-                    <div>
-                        <p>komen</p>
-                    </div>
-                    <div>
-                        <p>lokasi</p>
+                    <div class="tab-indicator"></div>
+                    <div class="tab-body">
+                        <div class="active">
+                            <p>{{ $details -> description }}Quinoa can be rubed with quartered raspberries, also try tossing the fritters with red wine.</p>
+                        </div>
+                        <div>
+                            <p>komen</p>
+                        </div>
+                        <div>
+                            <p>lokasi</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,6 +240,7 @@
 </script>
 
 <script>
+
     myID = document.getElementById("buyer-action-id");
 
     var myScrollFunc = function () {

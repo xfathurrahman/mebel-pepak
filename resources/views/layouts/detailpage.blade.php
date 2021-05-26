@@ -54,6 +54,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
         <script src="{{ asset('js/4image-upload.js') }}"></script>
+        {{--Carousel Detail--}}
         <script>
             $(document).ready(function () {
                 $('.first ol li a').click(function () {
@@ -61,14 +62,16 @@
                     $(this).closest('a').addClass('active-1');
                 });
             });
+            $('.carousel').carousel({
+                touch: false
+            });
         </script>
-
         {{--Carousel Thumbnail--}}
         <script>
             $(document).ready(function (){
                 $('.owl-carousel-detail').owlCarousel({
                     loop:false,
-                    margin:10,
+                    margin:0,
                     autoWidth:true,
                     nav:false,
                     item: 5,
@@ -76,32 +79,9 @@
                     slideSpeed: 100,
                     mouseDrag: false,
                     touchDrag: false,
+                    slide: false,
                     dots:false,
-                    navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
-                    responsive:{
-                        350:{
-                            items:3,
-                            nav:true,
-                            mouseDrag: true,
-                            touchDrag: true,
-                        },
-                        768:{
-                            items:3,
-                            nav:true,
-                            mouseDrag: true,
-                            touchDrag: true,
-                        },
-                        1200:{
-                            items:4,
-                            nav:true,
-                            mouseDrag: true,
-                            touchDrag: true,
-                        },
-                        1500:{
-                            items:5,
-
-                        }
-                    }
+                    /*navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],*/
                 })
             });
         </script>
