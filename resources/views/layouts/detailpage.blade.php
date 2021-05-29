@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- CSS Libraries -->
 </head>
-    <body class="font-sans antialiased">
+    <body class="antialiased">
         <div class="main-wrapper">
             <!-- Header -->
             <div class="fixed top-0 header-nav w-full mr-0">

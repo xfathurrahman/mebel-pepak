@@ -582,7 +582,7 @@
         font-size: 23px;
     }
     .target-scroll {
-        top: 104%;
+        top: 103.5%;
     }
 }
 
@@ -605,7 +605,7 @@
         font-size: 25px;
     }
     .target-scroll {
-        top: 239.5%;
+        top: 238%;
     }
 }
 
@@ -634,7 +634,7 @@
 
 @media screen and (max-width: 817px) {
     .target-scroll {
-        top: 227%;
+        top: 227.5%;
     }
 }
 
@@ -683,7 +683,7 @@
 
 @media screen and (max-width: 767px){
     .target-scroll {
-        top: 225.5%;
+        top: 226.2%;
     }
     .breadcrumb {
         font-size: 10px
@@ -711,19 +711,19 @@
         font-size: 15px;
     }
     .target-scroll {
-        top: 217%;
+        top: 217.3%;
     }
 }
 
 @media screen and (max-width: 552px){
     .target-scroll {
-        top: 221%;
+        top: 221.6%;
     }
 }
 
 @media screen and (max-width: 513px){
     .target-scroll {
-        top: 227%;
+        top: 227.8%;
     }
 }
 
@@ -738,7 +738,7 @@
 
 @media screen and (max-width: 462px){
     .target-scroll {
-        top: 229.5%;
+        top: 227.5%;
     }
 }
 
@@ -773,13 +773,13 @@
         font-size: 1.3rem;
     }
     .target-scroll {
-        top: 236.5%;
+        top: 234.5%;
     }
 }
 
 @media screen and (max-width: 410px){
     .target-scroll {
-        top: 234%;
+        top: 231.5%;
     }
     .product-name-detail {
         margin-top: 0;
@@ -809,7 +809,7 @@
         font-size: 14px;
     }
     .target-scroll {
-        top: 258%;
+        top: 255.5%;
     }
 }
 
@@ -824,7 +824,10 @@
         padding: 3px 6px !important;
     }
     .target-scroll {
-        top: 257%;
+        top: 254%;
+    }
+    .breadcrumb {
+        letter-spacing: 0.2px;
     }
 }
 

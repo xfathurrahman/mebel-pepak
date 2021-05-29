@@ -60,6 +60,17 @@
     color: white;
 }
 
+.image-footer-brand {
+    max-width: 100%;
+    margin: 28px auto;
+}
+
+.image-footer-brand-detail {
+    max-width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*.main-footer-content .kontak-adm {
     background: rgba(0,0,0,0.40);
     border-radius: 9px;

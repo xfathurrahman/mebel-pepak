@@ -22,6 +22,12 @@ html , body {
     --font-blue: #41c4ff;
 }
 
+.search-main input:focus , .search-btn:focus {
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+}
+
 /*Minimal layar bisa responsive*/
 body {
     min-width: 350px;
@@ -224,6 +230,10 @@ body.dark .wrap-footer-item .social-network ul li a {
     background-color: rgba(26, 26, 26, 0.42);
 }
 
+body.dark .search-main .fa-search {
+    color: rgb(255, 255, 255);
+}
+
 /*End Dark Mode*/
 
 
@@ -336,8 +346,10 @@ body.dark .carousel-category .card {
 }
 
 .navbrand-img {
+    margin-top: auto;
+    margin-bottom: 0;
     max-width: 50px;
-    max-height: 25px;
+    max-height: 50px;
     display: none;
 }
 
@@ -918,6 +930,10 @@ body.dark .slick-wrapper .slick-next,body.dark .slick-wrapper .slick-prev {
     opacity: 50%;
 }
 
+.search-main {
+    width: 70%;
+}
+
 .navbar-primary .navbar-toggler {
     outline: none;
 }
@@ -1173,6 +1189,7 @@ body.dark .blob-btn__inner {
 }
 
 
+
 /*Versi Dark mode button auth end*/
 
 /******************************
@@ -1194,6 +1211,21 @@ body.dark .blob-btn__inner {
     }
     .slick-wrapper .slick-next{
         top: -19%;
+    }
+}
+
+@media (max-width: 817px) {
+    .navright {
+        width: 100%;
+    }
+    .search-main {
+        width: 100%;
+    }
+    .btn-auth-guest {
+        margin: 0 auto 0 auto;
+    }
+    body {
+        padding: 9.8rem 0 0 0;
     }
 }
 
@@ -1221,24 +1253,18 @@ body.dark .blob-btn__inner {
 
 }
 
-@media (min-width: 575px) {
-    .navbrand-homepage .fa-heart{
-        display: none;
+@media screen and (max-width: 650px) {
+    .carousel-category .card-body p {
+        font-weight: 600;
+        font-size: 10px;
+        padding: 0;
+        margin: 0;
     }
 }
 
-@media (max-width: 816px) {
-    .navright {
-        width: 100%;
-    }
-    .navleft {
-        width: 100%;
-    }
-    .btn-auth-guest {
-        margin: 0 auto 0 auto;
-    }
-    body {
-        padding: 10.1rem 0 0 0;
+@media (min-width: 575px) {
+    .navbrand-homepage .fa-heart{
+        display: none;
     }
 }
 
@@ -1271,45 +1297,7 @@ body.dark .blob-btn__inner {
         display: none;
     }
     body {
-        padding: 9.5rem 0 0 0;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .carousel-category .card-body p {
-        font-weight: 600;
-        font-size: 10px;
-        padding: 0;
-        margin: 0;
-    }
-}
-
-@media (max-width: 100px) {
-    .btn-seeall-carousel:before {
-        position: absolute;
-        right: 10px;
-        left: auto;
-        bottom: 0;
-        height: 15%;
-    }
-}
-
-@media (max-width: 300px) {
-    .btn-seeall-carousel .button:before {
-        content: "";
-        font-family: FontAwesome, sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        text-decoration: inherit;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: #ff6161;
-        transition: all 0.3s;
-        border-radius: 10rem;
-        z-index: -1;
+        padding: 9.8rem 0 0 0;
     }
 }
 

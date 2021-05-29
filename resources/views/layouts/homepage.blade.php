@@ -25,7 +25,7 @@
     <!-- CSS Libraries -->
 
 </head>
-    <body class="font-sans antialiased">
+    <body>
         <div class="main-wrapper">
             <!-- Header -->
             <div class="fixed top-0 header-nav w-full mr-0">

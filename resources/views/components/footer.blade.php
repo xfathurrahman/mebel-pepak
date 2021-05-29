@@ -70,11 +70,19 @@
                         <div class="item-content">
                             <div class="wrap-contact-detail text-center">
                                 <ul>
-                                    <li>
-                                        <div class="image" aria-label="footer background">
-                                            <img class="mx-auto" src="{{ asset('storage/assets/img_footerfix.png')}}" alt="footer-bg">
-                                        </div>
-                                    </li>
+                                    @if( Request::is('/') )
+                                        <li>
+                                            <div class="image-footer-brand" aria-label="footer background">
+                                                <img class="mx-auto" src="{{ asset('storage/assets/img_footerfix.png')}}" alt="footer-bg">
+                                            </div>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <div class="image-footer-brand-detail" aria-label="footer background">
+                                                <img class="mx-auto" src="{{ asset('storage/assets/img_footerfix.png')}}" alt="footer-bg">
+                                            </div>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -111,11 +119,11 @@
             </div>
         </div>
 
-        <div class="row bg-black credit-image p-0 m-0">
+{{--        <div class="row bg-black credit-image p-0 m-0">
             <div class="col-12 text-white">
                 <p class="p-0 m-0"><i class="fas fa-camera-retro"></i>&nbsp; Credit to : @dolanboyolali | @dhahnial | @yohanrineko | @jokodwiwahyudi | @don_aldiano on Instagram.com</p>
             </div>
-        </div>
+        </div>--}}
 
         <div class="bottom-menu-wrapper row px-10 bg-dark">
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 flex justify-start items-center" style="margin-left: auto; margin-right: auto">
