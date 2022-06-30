@@ -4,9 +4,7 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,28 +20,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', HomepageController::class);
 
-Route::get('detail/{slugusername}/{id}/{slug}', [DetailProductController::class,'index']);
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::resource('category', CategoryController::class);
-Route::delete('/selected-category', [CategoryController::class, 'deleteSelectedItem'])->name('category.deleteSelectedCategory');
-Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
-
-Route::resource('carousel', CarouselController::class);
-Route::delete('/selected-carousel', [CarouselController::class, 'deleteSelectedItem'])->name('carousel.deleteSelectedCarousel');
-Route::delete('/carousel/{id}', [CarouselController::class, 'destroy']);
+    return view('dashboard');})->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function() {
+//    Edit Produk
     Route::resource('products', ProductController::class);
     Route::delete('/selected-products', [ProductController::class, 'deleteSelectedItem'])->name('products.deleteSelectedProduct');
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+    Route::post('products/media', [ProductController::class,'storeMedia'])
+        ->name('products.storeMedia');
+//    Edit Kategori
+    Route::resource('category', CategoryController::class);
+    Route::delete('/selected-category', [CategoryController::class, 'deleteSelectedItem'])->name('category.deleteSelectedCategory');
+    Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
+//    Edit Carousel
+    Route::resource('carousel', CarouselController::class);
+    Route::delete('/selected-carousel', [CarouselController::class, 'deleteSelectedItem'])->name('carousel.deleteSelectedCarousel');
+    Route::delete('/carousel/{id}', [CarouselController::class, 'destroy']);
 });
 
-Route::post('products/media', [ProductController::class,'storeMedia'])
-    ->name('products.storeMedia');
+Route::get('detail/{slugusername}/{id}/{slug}', [DetailProductController::class,'index']);
 
 Route::post('/dropzone', [ProductController::class,'dropzone'])->name('dropzone');
 
